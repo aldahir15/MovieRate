@@ -8,9 +8,12 @@
     "babel-preset-react": "^6.24.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-modal": "^2.3.2",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
-    "webpack": "^4.8.3"
+    "webpack": "3.6.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
@@ -20,8 +23,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --watch"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-cli": "^3.2.1"
+  }
 }
