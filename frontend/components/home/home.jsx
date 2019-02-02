@@ -13,6 +13,8 @@ class Home extends React.Component {
     this.handleClickImg = this.handleClickImg.bind(this);
     this.handleCreateRate = this.handleCreateRate.bind(this);
     this.handleUpdateRate = this.handleUpdateRate.bind(this);
+    this.handleEnterPoster = this.handleEnterPoster.bind(this);
+    this.handleLeavePoster = this.handleLeavePoster.bind(this);
 
     this.state = {
       movies: {},
@@ -118,6 +120,32 @@ class Home extends React.Component {
     })
   }
 
+  handleEnterPoster(e) {
+    let poster;
+    if (e.target.classList[0] === "overlay") {
+      poster = e.target.previousSibling;
+    } else if (e.target.classList[0] === "overlay-text") {
+      poster = e.target.parentElement.previousSibling;
+    } else {
+      poster = e.target;
+    }
+    
+    poster.classList.add('movie-poster-hover');
+  }
+
+  handleLeavePoster(e) {
+    let poster;
+    if (e.target.classList[0] === "overlay") {
+      poster = e.target.previousSibling;
+    } else if (e.target.classList[0] === "overlay-text") {
+      poster = e.target.parentElement.previousSibling;
+    } else {
+      poster = e.target;
+    }
+    
+    poster.classList.remove('movie-poster-hover');
+  }
+
   render() {
     return (
     <div id = "main-container">
@@ -129,9 +157,9 @@ class Home extends React.Component {
         {Object.keys(this.state.movies).map(key => 
           <div className="movie-block" id={key} key={key}>
             <div className="img-block">
-              <img src={this.state.movies[key].img} className="movie-poster-img"></img>
-              <div className="overlay">
-                <p>{this.state.movies[key].description}</p>
+              <img src={this.state.movies[key].img} className="movie-poster-img" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}></img>
+              <div className="overlay" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}>
+                <p className="overlay-text">{this.state.movies[key].description}</p>
               </div>
             </div>
             <p>

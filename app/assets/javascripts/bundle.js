@@ -43980,6 +43980,8 @@ var Home = function (_React$Component) {
     _this.handleClickImg = _this.handleClickImg.bind(_this);
     _this.handleCreateRate = _this.handleCreateRate.bind(_this);
     _this.handleUpdateRate = _this.handleUpdateRate.bind(_this);
+    _this.handleEnterPoster = _this.handleEnterPoster.bind(_this);
+    _this.handleLeavePoster = _this.handleLeavePoster.bind(_this);
 
     _this.state = {
       movies: {},
@@ -44098,6 +44100,34 @@ var Home = function (_React$Component) {
       });
     }
   }, {
+    key: 'handleEnterPoster',
+    value: function handleEnterPoster(e) {
+      var poster = void 0;
+      if (e.target.classList[0] === "overlay") {
+        poster = e.target.previousSibling;
+      } else if (e.target.classList[0] === "overlay-text") {
+        poster = e.target.parentElement.previousSibling;
+      } else {
+        poster = e.target;
+      }
+
+      poster.classList.add('movie-poster-hover');
+    }
+  }, {
+    key: 'handleLeavePoster',
+    value: function handleLeavePoster(e) {
+      var poster = void 0;
+      if (e.target.classList[0] === "overlay") {
+        poster = e.target.previousSibling;
+      } else if (e.target.classList[0] === "overlay-text") {
+        poster = e.target.parentElement.previousSibling;
+      } else {
+        poster = e.target;
+      }
+
+      poster.classList.remove('movie-poster-hover');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this5 = this;
@@ -44125,13 +44155,13 @@ var Home = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'img-block' },
-                _react2.default.createElement('img', { src: _this5.state.movies[key].img, className: 'movie-poster-img' }),
+                _react2.default.createElement('img', { src: _this5.state.movies[key].img, className: 'movie-poster-img', onMouseEnter: _this5.handleEnterPoster, onMouseLeave: _this5.handleLeavePoster }),
                 _react2.default.createElement(
                   'div',
-                  { className: 'overlay' },
+                  { className: 'overlay', onMouseEnter: _this5.handleEnterPoster, onMouseLeave: _this5.handleLeavePoster },
                   _react2.default.createElement(
                     'p',
-                    null,
+                    { className: 'overlay-text' },
                     _this5.state.movies[key].description
                   )
                 )
@@ -44257,12 +44287,8 @@ var AppModal = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement(
-          'button',
-          { onClick: this.openModal },
-          'Find Movie'
-        ),
+        { className: 'find-movie-div' },
+        _react2.default.createElement('button', { className: 'find-movie-button', onClick: this.openModal }),
         _react2.default.createElement(
           _reactModal2.default,
           {

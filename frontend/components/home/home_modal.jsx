@@ -48,8 +48,8 @@ class AppModal extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.openModal}>Find Movie</button>
+      <div className="find-movie-div">
+        <button className="find-movie-button" onClick={this.openModal}></button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
