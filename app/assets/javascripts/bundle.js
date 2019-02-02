@@ -40036,13 +40036,15 @@ var deleteMovie = exports.deleteMovie = function deleteMovie(id) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var API_KEY = document.head.querySelector('[name="api-key"]').content;
+
 var fetchOMDBMovie = exports.fetchOMDBMovie = function fetchOMDBMovie(title) {
   title = title.split(" ").join("+");
   title = escape(title);
   // console.log(encodeURIComponent(title));
   return $.ajax({
     method: 'GET',
-    url: "http://www.omdbapi.com/?t=" + title + "&apikey=58ddf78"
+    url: "http://www.omdbapi.com/?t=" + title + ("&apikey=" + API_KEY)
   });
 };
 
@@ -43935,7 +43937,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(process) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -43962,6 +43964,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+console.log(process.env.REACT_APP_WEATHER_API_KEY);
 
 var Home = function (_React$Component) {
   _inherits(Home, _React$Component);
@@ -44162,6 +44166,7 @@ var Home = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Home;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 120 */

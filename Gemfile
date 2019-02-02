@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "jquery-rails"
 gem 'seed_dump'
 gem 'turbolinks', '~> 5'
+gem 'seed_dump'
 
 
 

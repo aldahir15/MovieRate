@@ -1,10 +1,12 @@
+const API_KEY = document.head.querySelector('[name="api-key"]').content;
+
 export const fetchOMDBMovie = (title) => {
   title = title.split(" ").join("+");
   title = escape(title)
   // console.log(encodeURIComponent(title));
   return $.ajax({
     method: 'GET',
-    url: `http://www.omdbapi.com/?t=`+ title + `&apikey=58ddf78`
+    url: `http://www.omdbapi.com/?t=`+ title + `&apikey=${API_KEY}`
   });
 };
 

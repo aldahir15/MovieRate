@@ -1,5 +1,6 @@
 class Api::MoviesController < ApplicationController
   def index
+    # Run rake db:seed:dump based on gem 'seed_dump'
     @movies = Movie.all
   end 
 

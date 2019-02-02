@@ -2,6 +2,9 @@ import React from 'react';
 import HomeModal from './home_modal';
 import MovieContainer from '../movie/movie_container';
 
+console.log(process.env.REACT_APP_WEATHER_API_KEY)
+
+
 class Home extends React.Component {
   constructor(props){
     super(props);

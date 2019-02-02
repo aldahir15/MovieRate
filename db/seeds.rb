@@ -1,7 +1,46 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Movie.create!([
+  {title: "Get Out", description: "A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_SX300.jpg", year: 2017, genre: "Horror, Mystery, Thriller"},
+  {title: "Bird Box", description: "Five years after an ominous unseen presence drives most of society to suicide, a mother and her two children make a desperate bid to reach safety.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjAzMTI1MjMyN15BMl5BanBnXkFtZTgwNzU5MTE2NjM@._V1_SX300.jpg", year: 2018, genre: "Drama, Horror, Sci-Fi, Thriller"},
+  {title: "Kill Bill: Vol. 1", description: "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BNzM3NDFhYTAtYmU5Mi00NGRmLTljYjgtMDkyODQ4MjNkMGY2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg", year: 2003, genre: "Action, Crime, Thriller"},
+  {title: "Kill Bill: Vol. 2", description: "The Bride continues her quest of vengeance against her former boss and lover Bill, the reclusive bouncer Budd, and the treacherous, one-eyed Elle.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BNmFiYmJmN2QtNWQwMi00MzliLThiOWMtZjQxNGRhZTQ1MjgyXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_SX300.jpg", year: 2004, genre: "Action, Crime, Thriller"},
+  {title: "Paranormal Activity", description: "After moving into a suburban home, a couple becomes increasingly disturbed by a nightly demonic presence.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjY1NjcxODQ4MV5BMl5BanBnXkFtZTcwMzUxNjM4Mg@@._V1_SX300.jpg", year: 2007, genre: "Horror, Mystery, Thriller"},
+  {title: "The Fast and the Furious: Tokyo Drift", description: "A teenager becomes a major competitor in the world of drift racing after moving in with his father in Tokyo to avoid a jail sentence in America.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_SX300.jpg", year: 2006, genre: "Action, Crime, Thriller"},
+  {title: "Escape Room", description: "Six strangers find themselves in circumstances beyond their control, and must use their wits to survive.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjQ2NDMwMTY3MF5BMl5BanBnXkFtZTgwNDg5OTc1NjM@._V1_SX300.jpg", year: 2019, genre: "Drama, Mystery, Sci-Fi, Thriller"},
+  {title: "Creed II", description: "Under the tutelage of Rocky Balboa, heavyweight contender Adonis Creed faces off against Viktor Drago, son of Ivan Drago.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMTcxMjUwNjQ5N15BMl5BanBnXkFtZTgwNjk4MzI4NjM@._V1_SX300.jpg", year: 2018, genre: "Drama, Sport"},
+  {title: "Battle Royale", description: "In the future, the Japanese government captures a class of ninth-grade students and forces them to kill each other under the revolutionary \"Battle Royale\" act.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMTgxMmJhNjItMmFlMS00MWVlLWIyMjktYjUyYTI4MzA0YzgxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg", year: 2000, genre: "Adventure, Drama, Sci-Fi, Thriller"},
+  {title: "Spider-Man: Into the Spider-Verse", description: "Teen Miles Morales becomes Spider-Man of his reality, crossing his path with five counterparts from another dimensions to stop a threat for all realities.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_SX300.jpg", year: 2018, genre: "Animation, Action, Adventure, Comedy, Family, Sci-Fi"},
+  {title: "My Girlfriend's Boyfriend", description: "Jesse meets Ethan, someone she could finally fall in love with, but then she meets Troy, and now she has a dilemma.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMTExMjAwNjgwMDReQTJeQWpwZ15BbWU3MDg3NjAxMzM@._V1_SX300.jpg", year: 2010, genre: "Comedy, Romance"},
+  {title: "Fyre", description: "An exclusive behind the scenes look at the infamous unraveling of the Fyre music festival.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjQ2NzE1MjYxMV5BMl5BanBnXkFtZTgwMjM3MDQxNzM@._V1_SX300.jpg", year: 2019, genre: "N/A"},
+  {title: "Overlord", description: "A small group of American soldiers find horror behind enemy lines on the eve of D-Day.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BNzU0NTI1MTU2M15BMl5BanBnXkFtZTgwNTg4MDIzNjM@._V1_SX300.jpg", year: 2018, genre: "Action, Adventure, Horror, Mystery, Sci-Fi, War"},
+  {title: "Paranormal Activity 2", description: "After experiencing what they think are a series of \"break-ins\", a family sets up security cameras around their home, only to realize that the events unfolding before them are more sinister than they seem.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjE4NDgwMzAxNF5BMl5BanBnXkFtZTcwNTE3OTk4Mw@@._V1_SX300.jpg", year: 2010, genre: "Horror"},
+  {title: "Paranormal Activity 3", description: "In 1988, young sisters Katie and Kristi befriend an invisible entity who resides in their home.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMTk0MTQzODQzOV5BMl5BanBnXkFtZTcwMDQ2NzQ3Ng@@._V1_SX300.jpg", year: 2011, genre: "Horror"},
+  {title: "Paranormal Activity 4", description: "It has been five years since the disappearance of Katie and Hunter, and a suburban family witness strange events in their neighborhood when a woman and a mysterious child move in.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BNjAxMzM0MjYwM15BMl5BanBnXkFtZTcwMjMwMjAyOA@@._V1_SX300.jpg", year: 2012, genre: "Horror"},
+  {title: "Paranormal Activity: The Ghost Dimension", description: "Using a special camera that can see spirits, a family must protect their daughter from an evil entity with a sinister plan.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMjQxMjE5OTA3OF5BMl5BanBnXkFtZTgwMDAxNTg4NjE@._V1_SX300.jpg", year: 2015, genre: "Horror"},
+  {title: "Jiro Dreams of Sushi", description: "A documentary on 85-year-old sushi master Jiro Ono, his renowned Tokyo restaurant, and his relationship with his son and eventual heir, Yoshikazu.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMTA5NzQzODUxOTheQTJeQWpwZ15BbWU3MDIwODg1MDc@._V1_SX300.jpg", year: 2011, genre: "Documentary"},
+  {title: "Megan Is Missing", description: "Two teenage girls encounter an Internet child predator.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BMTU0NzYxNjIzM15BMl5BanBnXkFtZTcwOTU0NDM1Mw@@._V1_SX300.jpg", year: 2011, genre: "Drama, Horror, Thriller"},
+  {title: "The Room", description: "Johnny is a successful banker who lives happily in a San Francisco townhouse with his fiancée, Lisa. One day, inexplicably, she gets bored with him and decides to seduce his best friend, Mark. From there, nothing will be the same again.", rating_id: nil, img: "https://m.media-amazon.com/images/M/MV5BYjEzN2FlYmYtNDkwMC00NGFkLWE5ODctYmE5NmYxNzE2MmRiXkEyXkFqcGdeQXVyMjMwODc5Mw@@._V1_SX300.jpg", year: 2003, genre: "Drama"}
+])
+Rating.create!([
+  {rate: 1, movie_id: 5},
+  {rate: 1, movie_id: 7},
+  {rate: 0, movie_id: 6},
+  {rate: 0, movie_id: 8},
+  {rate: 1, movie_id: 9},
+  {rate: 1, movie_id: 10},
+  {rate: 0, movie_id: 12},
+  {rate: 0, movie_id: 13},
+  {rate: 1, movie_id: 14},
+  {rate: -1, movie_id: 16},
+  {rate: 0, movie_id: 17},
+  {rate: 0, movie_id: 18},
+  {rate: 0, movie_id: 19},
+  {rate: 0, movie_id: 20},
+  {rate: 0, movie_id: 21},
+  {rate: 0, movie_id: 22},
+  {rate: 0, movie_id: 23},
+  {rate: 1, movie_id: 15},
+  {rate: 0, movie_id: 24},
+  {rate: 1, movie_id: 26},
+  {rate: 0, movie_id: 27},
+  {rate: 1, movie_id: 28}
+])
