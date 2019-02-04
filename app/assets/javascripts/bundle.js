@@ -44137,7 +44137,7 @@ var Home = function (_React$Component) {
   }, {
     key: 'filter',
     value: function filter(e) {
-      var target = e.target;
+      var target = e.target.tagName === "H4" ? e.target.parentElement : e.target;
       var movieList = void 0;
       if (target.id === "filter-name") {
         movieList = this.masterMovieList;
@@ -44192,7 +44192,7 @@ var Home = function (_React$Component) {
             { className: (this.state.filters.name ? "filter-active" : "filter") + ' filter-name', id: 'filter-name', onClick: this.filter },
             _react2.default.createElement(
               'h4',
-              null,
+              { onClick: this.filter },
               'Name'
             )
           ),
@@ -44202,7 +44202,7 @@ var Home = function (_React$Component) {
             { className: (this.state.filters.rating ? "filter-active" : "filter") + ' filter-rating', id: 'filter-rating', onClick: this.filter },
             _react2.default.createElement(
               'h4',
-              null,
+              { onClick: this.filter },
               'Rating'
             )
           ),
@@ -44212,7 +44212,7 @@ var Home = function (_React$Component) {
             { className: (this.state.filters.genre ? "filter-active" : "filter") + ' filter-genre', id: 'filter-genre', onClick: this.filter },
             _react2.default.createElement(
               'h4',
-              null,
+              { onClick: this.filter },
               'Genre'
             )
           )
