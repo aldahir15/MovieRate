@@ -150,7 +150,7 @@ class Home extends React.Component {
     return (
     <div id = "main-container">
       <div className="HomeHeader">
-        <h1>Movie List</h1>
+        <h1>Movie Ratings</h1>
         <HomeModal action={MovieContainer} />
       </div>
       <ul id = "main-container-ul">

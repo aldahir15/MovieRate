@@ -44141,7 +44141,7 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Movie List'
+            'Movie Ratings'
           ),
           _react2.default.createElement(_home_modal2.default, { action: _movie_container2.default })
         ),
