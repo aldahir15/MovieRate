@@ -2,8 +2,6 @@ import React from 'react';
 import HomeModal from './home_modal';
 import MovieContainer from '../movie/movie_container';
 
-console.log(process.env.REACT_APP_WEATHER_API_KEY)
-
 
 class Home extends React.Component {
   constructor(props){
@@ -15,6 +13,9 @@ class Home extends React.Component {
     this.handleUpdateRate = this.handleUpdateRate.bind(this);
     this.handleEnterPoster = this.handleEnterPoster.bind(this);
     this.handleLeavePoster = this.handleLeavePoster.bind(this);
+    this.filter = this.filter.bind(this);
+
+    this.masterMovieList;
 
     this.state = {
       movies: {},
@@ -25,6 +26,11 @@ class Home extends React.Component {
         happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-good-selected.png",
         mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-okay-selected.png",
         sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-bad-selected.png"
+      },
+      filters: {
+        name: true,
+        rating: false,
+        genre: false,
       }
     }
   }
@@ -36,6 +42,7 @@ class Home extends React.Component {
       // console.log(Object.values(movies.movies)[0])
       const allMoviesArr = Object.values(movies.movies).sort((x,y) => x.title.split(" ")[0].localeCompare(y.title.split(" ")[0]));
       const allMoviesObj = Object.assign({}, allMoviesArr);
+      this.masterMovieList = allMoviesObj;
       this.setState({movies: allMoviesObj});
     });
   }
@@ -146,12 +153,58 @@ class Home extends React.Component {
     poster.classList.remove('movie-poster-hover');
   }
 
+  filter(e) {
+    const target = e.target;
+    let movieList;
+    if (target.id === "filter-name") {
+      movieList = this.masterMovieList;
+      this.setState({movies: movieList, filters: {
+        name: true,
+        rating: false,
+        genre: false
+      }});
+    } else if (target.id === "filter-rating") {
+      movieList = Object.values(this.masterMovieList).sort((x,y) => {
+        // console.log(x,y)
+        if (x.rating && y.rating) {
+          // console.log(x,y);
+          return y.rating.rate - x.rating.rate;
+        } else if (x.rating) {
+          return (-2) - x.rating.rate;
+        } else if (y.rating) {
+          return y.rating.rate - (-2);
+        }
+      });
+      const allMoviesObj = Object.assign({}, movieList);
+      this.setState({movies: allMoviesObj, filters: {
+        name: false,
+        rating: true,
+        genre: false
+      }});
+    } else if (target.id === "filter-genre") {
+
+    }
+  }
+
   render() {
     return (
     <div id = "main-container">
       <div className="HomeHeader">
         <h1>Movie List</h1>
         <HomeModal action={MovieContainer} />
+      </div>
+      <div className="filterMovies">
+        <div className={`${this.state.filters.name ? "filter-active" : "filter"} filter-name`} id="filter-name" onClick={this.filter}>
+         <h4>Name</h4>
+        </div>
+        <div className="filter-divider"></div>
+        <div className={`${this.state.filters.rating ? "filter-active" : "filter"} filter-rating`} id="filter-rating" onClick={this.filter}>
+         <h4>Rating</h4>
+        </div>
+        <div className="filter-divider"></div>
+        <div className={`${this.state.filters.genre ? "filter-active" : "filter"} filter-genre`} id="filter-genre" onClick={this.filter}>
+         <h4>Genre</h4>
+        </div>
       </div>
       <ul id = "main-container-ul">
         {Object.keys(this.state.movies).map(key => 

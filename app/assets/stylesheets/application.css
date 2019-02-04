@@ -127,6 +127,33 @@ body {
   transition: .5s ease;
 }
 
+.filterMovies {
+  display: flex;
+  margin-left: 20px;
+}
+
+.filter {
+  border: 1px solid white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.filter:hover, .filter-active {
+  border: 1px solid white;
+  padding: 10px 20px;
+  background-color: grey;
+  cursor: pointer;
+}
+
+.filterMovies h4 {
+  margin: 0;
+  color: white;
+}
+
+.filter-divider {
+  width: 10px;
+}
+
 .movie-poster-img:hover, .movie-poster-hover {
   /* position: absolute; */
   top: 0;

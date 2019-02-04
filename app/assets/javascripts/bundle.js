@@ -43937,7 +43937,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -43965,8 +43965,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-console.log(process.env.REACT_APP_WEATHER_API_KEY);
-
 var Home = function (_React$Component) {
   _inherits(Home, _React$Component);
 
@@ -43982,6 +43980,9 @@ var Home = function (_React$Component) {
     _this.handleUpdateRate = _this.handleUpdateRate.bind(_this);
     _this.handleEnterPoster = _this.handleEnterPoster.bind(_this);
     _this.handleLeavePoster = _this.handleLeavePoster.bind(_this);
+    _this.filter = _this.filter.bind(_this);
+
+    _this.masterMovieList;
 
     _this.state = {
       movies: {},
@@ -43992,6 +43993,11 @@ var Home = function (_React$Component) {
         happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-good-selected.png",
         mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-okay-selected.png",
         sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-bad-selected.png"
+      },
+      filters: {
+        name: true,
+        rating: false,
+        genre: false
       }
     };
     return _this;
@@ -44010,6 +44016,7 @@ var Home = function (_React$Component) {
           return x.title.split(" ")[0].localeCompare(y.title.split(" ")[0]);
         });
         var allMoviesObj = Object.assign({}, allMoviesArr);
+        _this2.masterMovieList = allMoviesObj;
         _this2.setState({ movies: allMoviesObj });
       });
     }
@@ -44128,6 +44135,38 @@ var Home = function (_React$Component) {
       poster.classList.remove('movie-poster-hover');
     }
   }, {
+    key: 'filter',
+    value: function filter(e) {
+      var target = e.target;
+      var movieList = void 0;
+      if (target.id === "filter-name") {
+        movieList = this.masterMovieList;
+        this.setState({ movies: movieList, filters: {
+            name: true,
+            rating: false,
+            genre: false
+          } });
+      } else if (target.id === "filter-rating") {
+        movieList = Object.values(this.masterMovieList).sort(function (x, y) {
+          // console.log(x,y)
+          if (x.rating && y.rating) {
+            // console.log(x,y);
+            return y.rating.rate - x.rating.rate;
+          } else if (x.rating) {
+            return -2 - x.rating.rate;
+          } else if (y.rating) {
+            return y.rating.rate - -2;
+          }
+        });
+        var allMoviesObj = Object.assign({}, movieList);
+        this.setState({ movies: allMoviesObj, filters: {
+            name: false,
+            rating: true,
+            genre: false
+          } });
+      } else if (target.id === "filter-genre") {}
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this5 = this;
@@ -44144,6 +44183,39 @@ var Home = function (_React$Component) {
             'Movie List'
           ),
           _react2.default.createElement(_home_modal2.default, { action: _movie_container2.default })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'filterMovies' },
+          _react2.default.createElement(
+            'div',
+            { className: (this.state.filters.name ? "filter-active" : "filter") + ' filter-name', id: 'filter-name', onClick: this.filter },
+            _react2.default.createElement(
+              'h4',
+              null,
+              'Name'
+            )
+          ),
+          _react2.default.createElement('div', { className: 'filter-divider' }),
+          _react2.default.createElement(
+            'div',
+            { className: (this.state.filters.rating ? "filter-active" : "filter") + ' filter-rating', id: 'filter-rating', onClick: this.filter },
+            _react2.default.createElement(
+              'h4',
+              null,
+              'Rating'
+            )
+          ),
+          _react2.default.createElement('div', { className: 'filter-divider' }),
+          _react2.default.createElement(
+            'div',
+            { className: (this.state.filters.genre ? "filter-active" : "filter") + ' filter-genre', id: 'filter-genre', onClick: this.filter },
+            _react2.default.createElement(
+              'h4',
+              null,
+              'Genre'
+            )
+          )
         ),
         _react2.default.createElement(
           'ul',
@@ -44196,7 +44268,6 @@ var Home = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Home;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 120 */
