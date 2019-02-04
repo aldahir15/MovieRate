@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  validates :title, :uniqueness => true
 
   has_one :rating,
     primary_key: :id,
