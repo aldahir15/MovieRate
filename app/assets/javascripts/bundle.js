@@ -40044,7 +40044,7 @@ var fetchOMDBMovie = exports.fetchOMDBMovie = function fetchOMDBMovie(title) {
   // console.log(encodeURIComponent(title));
   return $.ajax({
     method: 'GET',
-    url: "http://www.omdbapi.com/?t=" + title + ("&apikey=" + API_KEY)
+    url: "https://www.omdbapi.com/?t=" + title + ("&apikey=" + API_KEY)
   });
 };
 
