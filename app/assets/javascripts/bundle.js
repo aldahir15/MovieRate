@@ -43987,12 +43987,12 @@ var Home = function (_React$Component) {
     _this.state = {
       movies: {},
       moods: {
-        happy: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-good.png",
-        meh: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-okay.png",
-        sad: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-bad.png",
-        happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-good-selected.png",
-        mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-okay-selected.png",
-        sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-bad-selected.png"
+        happy: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one.png",
+        meh: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero.png",
+        sad: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative.png",
+        happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one-select.png",
+        mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero-selected.png",
+        sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative-selected.png"
       },
       filters: {
         name: true,
@@ -44180,7 +44180,7 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Movie List'
+            'Movie Ratings'
           ),
           _react2.default.createElement(_home_modal2.default, { action: _movie_container2.default })
         ),
