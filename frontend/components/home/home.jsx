@@ -195,15 +195,15 @@ class Home extends React.Component {
       </div>
       <div className="filterMovies">
         <div className={`${this.state.filters.name ? "filter-active" : "filter"} filter-name`} id="filter-name" onClick={this.filter}>
-         <h4>Name</h4>
+         Name
         </div>
         <div className="filter-divider"></div>
         <div className={`${this.state.filters.rating ? "filter-active" : "filter"} filter-rating`} id="filter-rating" onClick={this.filter}>
-         <h4>Rating</h4>
+         Rating
         </div>
         <div className="filter-divider"></div>
         <div className={`${this.state.filters.genre ? "filter-active" : "filter"} filter-genre`} id="filter-genre" onClick={this.filter}>
-         <h4>Genre</h4>
+         Genre
         </div>
       </div>
       <ul id = "main-container-ul">
