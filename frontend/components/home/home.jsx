@@ -19,12 +19,12 @@ class Home extends React.Component {
     this.state = {
       movies: {},
       moods: {
-        happy: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-good.png",
-        meh: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-okay.png",
-        sad: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-bad.png",
-        happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-good-selected.png",
-        mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-okay-selected.png",
-        sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1548223816/rating-bad-selected.png"
+        happy: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one.png",
+        meh: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero.png",
+        sad: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative.png",
+        happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one-select.png",
+        mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero-selected.png",
+        sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative-selected.png"
       }
     }
   }
