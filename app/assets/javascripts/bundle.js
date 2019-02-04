@@ -43766,20 +43766,20 @@ var Movies = function (_React$Component) {
         _react2.default.createElement(
           "div",
           { className: "cta" },
-          _react2.default.createElement("input", { autocomplete: "off", placeholder: "Find Movie", id: "OMDBTit", type: "text", onKeyPress: this.fetchOMDBMovie }),
+          _react2.default.createElement("input", { autoComplete: "off", placeholder: "Find Movie", id: "OMDBTit", type: "text", onKeyPress: this.fetchOMDBMovie }),
           _react2.default.createElement(
             "button",
             { type: "submit", onClick: this.fetchOMDBMovie },
-            _react2.default.createElement("i", { "class": "fa fa-search" })
+            _react2.default.createElement("i", { className: "fa fa-search" })
           )
         ),
         _react2.default.createElement(
           "form",
           { className: "form hidden" },
+          this.state.fetchedMovieImg ? _react2.default.createElement("img", { src: this.state.fetchedMovieImg, className: "OMDB-img" }) : "",
           _react2.default.createElement(
             "div",
             { className: "OMDB-info" },
-            this.state.fetchedMovieImg ? _react2.default.createElement("img", { src: this.state.fetchedMovieImg, className: "OMDB-img" }) : "",
             _react2.default.createElement(
               "ul",
               { className: "OMDB-ul" },
@@ -43819,16 +43819,17 @@ var Movies = function (_React$Component) {
                 "Rotten Tomatoes Rating: ",
                 this.state.fetchedMovieRatingRottenTomatoes
               ) : ""
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "search-button" },
+              this.state.fetchedMovieTitle ? _react2.default.createElement(
+                "button",
+                { className: "searchButton", onClick: this.saveOMDBMovie },
+                _react2.default.createElement("i", { className: "fa fa-plus-circle", "aria-hidden": "true" }),
+                " Save Movie"
+              ) : ""
             )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "search-button" },
-            this.state.fetchedMovieTitle ? _react2.default.createElement(
-              "button",
-              { className: "searchButton", onClick: this.saveOMDBMovie },
-              "Save Movie"
-            ) : ""
           )
         )
       );
@@ -44190,31 +44191,19 @@ var Home = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: (this.state.filters.name ? "filter-active" : "filter") + ' filter-name', id: 'filter-name', onClick: this.filter },
-            _react2.default.createElement(
-              'h4',
-              { onClick: this.filter },
-              'Name'
-            )
+            'Name'
           ),
           _react2.default.createElement('div', { className: 'filter-divider' }),
           _react2.default.createElement(
             'div',
             { className: (this.state.filters.rating ? "filter-active" : "filter") + ' filter-rating', id: 'filter-rating', onClick: this.filter },
-            _react2.default.createElement(
-              'h4',
-              { onClick: this.filter },
-              'Rating'
-            )
+            'Rating'
           ),
           _react2.default.createElement('div', { className: 'filter-divider' }),
           _react2.default.createElement(
             'div',
             { className: (this.state.filters.genre ? "filter-active" : "filter") + ' filter-genre', id: 'filter-genre', onClick: this.filter },
-            _react2.default.createElement(
-              'h4',
-              { onClick: this.filter },
-              'Genre'
-            )
+            'Genre'
           )
         ),
         _react2.default.createElement(

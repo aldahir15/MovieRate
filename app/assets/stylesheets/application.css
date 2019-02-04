@@ -23,7 +23,7 @@ body {
 #root {
   display: flex;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
  .Search-OMDB {
@@ -45,12 +45,30 @@ body {
  }
 
  .search-button {
-   display: flex;
-   /* width: 50%; */
-   flex-direction: column;
-   justify-content: center;
-   padding: 15px 75px;
- }
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+.searchButton {
+  background-color: transparent;
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12pt;
+  font-weight: bolder;
+  color: #c90000;
+  text-align: left;
+  text-decoration: none;
+  /* display: inline-block;
+  font-size: 16px; */
+}
+
+.searchButton:hover {
+  color: #8f0000;
+}
 
  .find-movie-div {
   display: flex;
@@ -131,24 +149,31 @@ body {
 .filterMovies {
   display: flex;
   margin-left: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  font-size: 10pt;
+  color: white;
 }
 
 .filter {
-  border: 1px solid white;
-  padding: 10px 20px;
+  border: 0px;
+  /* background-image: linear-gradient(120deg, #f33838, #ec3030); */
+  background-image: linear-gradient(120deg, #c90000, #af0000);
+  opacity: 0.5;
+  border-radius: 2.5px;
+  text-shadow: 1px 1px #c00000;
+  padding: 3px 20px;
   cursor: pointer;
 }
 
 .filter:hover, .filter-active {
-  border: 1px solid white;
-  padding: 10px 20px;
-  background-color: grey;
+  border: 0px;
+  opacity: 1;
+  background-image: linear-gradient(120deg, #c90000, #af0000);
+  border-radius: 2.5px;
+  text-shadow: 1px 1px #8f0000;
+  padding: 3px 20px;
   cursor: pointer;
-}
-
-.filterMovies h4 {
-  margin: 0;
-  color: white;
 }
 
 .filter-divider {
@@ -255,38 +280,29 @@ body {
   margin: 0;
 }
 
-.searchButton {
-  background-color: #858685;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-
 .HomeHeader button:hover, .searchButton {
   cursor: pointer;
 }
 
 .OMDB-info {
   display: flex;
+  flex-direction: column;
 }
 
 .OMDB-img {
-  width: 25%;
-  height: 25%;
-  padding: 5px;
-  border: 1px solid #c1c1c1;
+  width: 40%;
+  height: 40%;
+  /* padding: 5px;
+  border: 1px solid #c1c1c1; */
 }
 
 .OMDB-ul {
   list-style: none;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #686868;
+  font-weight: lighter;
   font-size: 10pt;
   line-height: 16pt;
+  color: #686868;
   padding-left: 16px;
   margin: 0;
 }

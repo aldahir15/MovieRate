@@ -82,13 +82,13 @@ class Movies extends React.Component {
     return(
       <div className="optin-container">
         <div className="cta">
-          <input autocomplete="off" placeholder="Find Movie" id="OMDBTit" type="text" onKeyPress={this.fetchOMDBMovie}/>
-          <button type="submit" onClick={this.fetchOMDBMovie}><i class="fa fa-search"></i></button>
+          <input autoComplete="off" placeholder="Find Movie" id="OMDBTit" type="text" onKeyPress={this.fetchOMDBMovie}/>
+          <button type="submit" onClick={this.fetchOMDBMovie}><i className="fa fa-search"></i></button>
         </div>
 
         <form className="form hidden">
+          {this.state.fetchedMovieImg ? <img src={this.state.fetchedMovieImg} className="OMDB-img" ></img> : ""}
           <div className="OMDB-info">
-                {this.state.fetchedMovieImg ? <img src={this.state.fetchedMovieImg} className="OMDB-img" ></img> : ""}
                 <ul className="OMDB-ul">
                   {this.state.fetchedMovieTitle ? <li>Title: {this.state.fetchedMovieTitle}</li> : ""}
                   {this.state.fetchedMovieYear ? <li>Year: {this.state.fetchedMovieYear}</li> : ""}
@@ -97,10 +97,10 @@ class Movies extends React.Component {
                   {this.state.fetchedMovieRatingIMDB ? <li>IMDB Rating: {this.state.fetchedMovieRatingIMDB}</li> : ""}
                   {this.state.fetchedMovieRatingRottenTomatoes ? <li>Rotten Tomatoes Rating: {this.state.fetchedMovieRatingRottenTomatoes}</li> : ""}
                 </ul>
+                <div className="search-button">
+                  {this.state.fetchedMovieTitle ? <button className="searchButton" onClick={this.saveOMDBMovie}><i className="fa fa-plus-circle" aria-hidden="true"></i> Save Movie</button> : ""}
               </div>
-              <div className="search-button">
-                {this.state.fetchedMovieTitle ? <button className="searchButton" onClick={this.saveOMDBMovie}>Save Movie</button> : ""}
-            </div>
+              </div>
         </form>	
         
       </div>
