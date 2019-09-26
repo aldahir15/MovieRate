@@ -36,6 +36,8 @@ class Api::MoviesController < ApplicationController
   end
 
   def destroy
+    @movie = Movie.find(params[:id])
+    @movie.delete
   end
 
   def movie_params

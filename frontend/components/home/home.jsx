@@ -14,6 +14,7 @@ class Home extends React.Component {
     this.handleEnterPoster = this.handleEnterPoster.bind(this);
     this.handleLeavePoster = this.handleLeavePoster.bind(this);
     this.filter = this.filter.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
 
     this.masterMovieList;
 
@@ -153,6 +154,18 @@ class Home extends React.Component {
     poster.classList.remove('movie-poster-hover');
   }
 
+  deleteMovie (e) {
+    const id = e.target.id;
+    var answer = window.confirm("Delete Movie?")
+    if (answer) {
+      const movie = this.props.deleteMovie(id);
+      // console.log(this.state.movies);
+      const refreshedMoviesArr = Object.values(this.state.movies).filter(movie => movie.id != id);
+      const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
+      this.setState({movies: refreshedMoviesObj});
+    }
+  }
+ 
   filter(e) {
     const target = e.target.tagName === "H4" ? e.target.parentElement : e.target;
     let movieList;
@@ -208,10 +221,13 @@ class Home extends React.Component {
       </div>
       <ul id = "main-container-ul">
         {Object.keys(this.state.movies).map(key => 
-          <div className="movie-block" id={key} key={key}>
+          <div className="movie-block" id={this.state.movies[key].id} key={key}>
             <div className="img-block">
               <img src={this.state.movies[key].img} className="movie-poster-img" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}></img>
               <div className="overlay" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}>
+                <div className="delete-container">
+                   <div className="delete-button" id={this.state.movies[key].id} onClick={this.deleteMovie}>Delete</div>
+                </div>
                 <p className="overlay-text">{this.state.movies[key].description}</p>
               </div>
             </div>

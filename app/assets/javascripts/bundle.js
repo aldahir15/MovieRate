@@ -43986,6 +43986,7 @@ var Home = function (_React$Component) {
     _this.handleEnterPoster = _this.handleEnterPoster.bind(_this);
     _this.handleLeavePoster = _this.handleLeavePoster.bind(_this);
     _this.filter = _this.filter.bind(_this);
+    _this.deleteMovie = _this.deleteMovie.bind(_this);
 
     _this.masterMovieList;
 
@@ -44140,6 +44141,21 @@ var Home = function (_React$Component) {
       poster.classList.remove('movie-poster-hover');
     }
   }, {
+    key: 'deleteMovie',
+    value: function deleteMovie(e) {
+      var id = e.target.id;
+      var answer = window.confirm("Delete Movie?");
+      if (answer) {
+        var movie = this.props.deleteMovie(id);
+        // console.log(this.state.movies);
+        var refreshedMoviesArr = Object.values(this.state.movies).filter(function (movie) {
+          return movie.id != id;
+        });
+        var refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
+        this.setState({ movies: refreshedMoviesObj });
+      }
+    }
+  }, {
     key: 'filter',
     value: function filter(e) {
       var target = e.target.tagName === "H4" ? e.target.parentElement : e.target;
@@ -44216,7 +44232,7 @@ var Home = function (_React$Component) {
           Object.keys(this.state.movies).map(function (key) {
             return _react2.default.createElement(
               'div',
-              { className: 'movie-block', id: key, key: key },
+              { className: 'movie-block', id: _this5.state.movies[key].id, key: key },
               _react2.default.createElement(
                 'div',
                 { className: 'img-block' },
@@ -44224,6 +44240,15 @@ var Home = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'overlay', onMouseEnter: _this5.handleEnterPoster, onMouseLeave: _this5.handleLeavePoster },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'delete-container' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'delete-button', id: _this5.state.movies[key].id, onClick: _this5.deleteMovie },
+                      'Delete'
+                    )
+                  ),
                   _react2.default.createElement(
                     'p',
                     { className: 'overlay-text' },
