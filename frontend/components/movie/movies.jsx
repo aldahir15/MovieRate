@@ -43,19 +43,20 @@ class Movies extends React.Component {
     if (e.key === 'Enter' || e.target.className === "fa fa-search") {
       e.preventDefault();
       let title = document.querySelector('#OMDBTit');
+      let year = document.querySelector('#OMDBYear');
       let hidden =  document.querySelector('.hidden');
       if (hidden) {
         hidden.className = 'form';
       }
 
       // let ratings = 
-      const movie = this.props.fetchOMDBMovie(title.value);
+      const movie = this.props.fetchOMDBMovie(title.value, year.value);
       movie.then((e) => this.setState({
         fetchedMovieTitle: e.movies.Title,
         fetchedMovieYear: e.movies.Year,
         fetchedMovieRelease: e.movies.Released,
         fetchedMovieGenre: e.movies.Genre,
-        fetchedMovieRatingIMDB: e.movies.Ratings[0].Value,
+        fetchedMovieRatingIMDB: e.movies.Ratings[0] ? e.movies.Ratings[0].Value : e.movies.imdbRating,
         fetchedMovieRatingRottenTomatoes: e.movies.Ratings[1] ? e.movies.Ratings[1].Value : "",
         fetchedMovieImg: e.movies.Poster,
         fetchedMovieDescription: e.movies.Plot
@@ -83,6 +84,7 @@ class Movies extends React.Component {
       <div className="optin-container">
         <div className="cta">
           <input autoComplete="off" placeholder="Find Movie" id="OMDBTit" type="text" onKeyPress={this.fetchOMDBMovie}/>
+          <input autoComplete="off" placeholder="Year" id="OMDBYear" type="number" onKeyPress={this.fetchOMDBMovie}/>
           <button type="submit" onClick={this.fetchOMDBMovie}><i className="fa fa-search"></i></button>
         </div>
 

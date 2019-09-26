@@ -37,6 +37,20 @@
   margin-right: 5px;
 }
 
+.optin-container input[type=number] {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  font-size: 15pt;
+  color: white;
+  background: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid white;
+  width: 80%;
+  margin-right: 5px;
+}
+
 ::placeholder {
   color: white;
   opacity: 1;
@@ -60,6 +74,7 @@
   text-align: center;
   text-decoration: none;
   width: 100%;
+  display: flex;
 }
 
 @media screen and (max-width: 600px) {

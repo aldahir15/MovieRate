@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies()),
   fetchMovie: (id) => dispatch(fetchMovie(id)),
   deleteMovie: (id) => dispatch(deleteMovie(id)),
-  fetchOMDBMovie: (title) => dispatch(fetchOMDBMovie(title)),
+  fetchOMDBMovie: (title, year) => dispatch(fetchOMDBMovie(title, year)),
   createMovie: (title) => dispatch(createMovie(title)),
   createRating: (rating) => dispatch(createRating(rating)),
   updateRating: (id, rating) => dispatch(updateRating(id, rating))

@@ -310,3 +310,15 @@ body {
 .search-title {
   size: 24px;
 }
+
+#OMDBYear {
+  width: 30%;
+  background: transparent;
+}
+
+#OMDBYear::-webkit-outer-spin-button,
+#OMDBYear::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

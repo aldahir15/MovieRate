@@ -1860,9 +1860,9 @@ var receiveMovie = exports.receiveMovie = function receiveMovie(movie) {
   };
 };
 
-var fetchOMDBMovie = exports.fetchOMDBMovie = function fetchOMDBMovie(title) {
+var fetchOMDBMovie = exports.fetchOMDBMovie = function fetchOMDBMovie(title, year) {
   return function (dispatch) {
-    return OMDBAPIUtil.fetchOMDBMovie(title).then(function (movie) {
+    return OMDBAPIUtil.fetchOMDBMovie(title, year).then(function (movie) {
       return dispatch(receiveMovies(movie));
     });
   };
@@ -20940,8 +20940,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteMovie: function deleteMovie(id) {
       return dispatch((0, _movie_actions.deleteMovie)(id));
     },
-    fetchOMDBMovie: function fetchOMDBMovie(title) {
-      return dispatch((0, _movie_actions.fetchOMDBMovie)(title));
+    fetchOMDBMovie: function fetchOMDBMovie(title, year) {
+      return dispatch((0, _movie_actions.fetchOMDBMovie)(title, year));
     },
     createMovie: function createMovie(title) {
       return dispatch((0, _movie_actions.createMovie)(title));
@@ -40039,12 +40039,14 @@ Object.defineProperty(exports, "__esModule", {
 var API_KEY = document.head.querySelector('[name="api-key"]').content;
 
 var fetchOMDBMovie = exports.fetchOMDBMovie = function fetchOMDBMovie(title) {
+  var year = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2019;
+
   title = title.split(" ").join("+");
   title = escape(title);
   // console.log(encodeURIComponent(title));
   return $.ajax({
     method: 'GET',
-    url: "https://www.omdbapi.com/?t=" + title + ("&apikey=" + API_KEY)
+    url: "https://www.omdbapi.com/?t=" + title + "&y=" + year + ("&apikey=" + API_KEY)
   });
 };
 
@@ -43720,20 +43722,21 @@ var Movies = function (_React$Component) {
       if (e.key === 'Enter' || e.target.className === "fa fa-search") {
         e.preventDefault();
         var title = document.querySelector('#OMDBTit');
+        var year = document.querySelector('#OMDBYear');
         var hidden = document.querySelector('.hidden');
         if (hidden) {
           hidden.className = 'form';
         }
 
         // let ratings = 
-        var movie = this.props.fetchOMDBMovie(title.value);
+        var movie = this.props.fetchOMDBMovie(title.value, year.value);
         movie.then(function (e) {
           return _this2.setState({
             fetchedMovieTitle: e.movies.Title,
             fetchedMovieYear: e.movies.Year,
             fetchedMovieRelease: e.movies.Released,
             fetchedMovieGenre: e.movies.Genre,
-            fetchedMovieRatingIMDB: e.movies.Ratings[0].Value,
+            fetchedMovieRatingIMDB: e.movies.Ratings[0] ? e.movies.Ratings[0].Value : e.movies.imdbRating,
             fetchedMovieRatingRottenTomatoes: e.movies.Ratings[1] ? e.movies.Ratings[1].Value : "",
             fetchedMovieImg: e.movies.Poster,
             fetchedMovieDescription: e.movies.Plot
@@ -43767,6 +43770,7 @@ var Movies = function (_React$Component) {
           "div",
           { className: "cta" },
           _react2.default.createElement("input", { autoComplete: "off", placeholder: "Find Movie", id: "OMDBTit", type: "text", onKeyPress: this.fetchOMDBMovie }),
+          _react2.default.createElement("input", { autoComplete: "off", placeholder: "Year", id: "OMDBYear", type: "number", onKeyPress: this.fetchOMDBMovie }),
           _react2.default.createElement(
             "button",
             { type: "submit", onClick: this.fetchOMDBMovie },
@@ -43916,8 +43920,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteMovie: function deleteMovie(id) {
       return dispatch((0, _movie_actions.deleteMovie)(id));
     },
-    fetchOMDBMovie: function fetchOMDBMovie(title) {
-      return dispatch((0, _movie_actions.fetchOMDBMovie)(title));
+    fetchOMDBMovie: function fetchOMDBMovie(title, year) {
+      return dispatch((0, _movie_actions.fetchOMDBMovie)(title, year));
     },
     createMovie: function createMovie(title) {
       return dispatch((0, _movie_actions.createMovie)(title));
