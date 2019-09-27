@@ -239,7 +239,7 @@ body {
   color: white;
   transition: .5s ease;
   font-size: 12px;
-}
+} 
 
 .delete-button:hover {
   border: 0px;
