@@ -15,6 +15,7 @@ class Home extends React.Component {
     this.handleLeavePoster = this.handleLeavePoster.bind(this);
     this.filter = this.filter.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
+    this.movieListToObj = this.movieListToObj.bind(this);
 
     this.masterMovieList;
 
@@ -36,13 +37,23 @@ class Home extends React.Component {
     }
   }
 
+  movieListToObj(arr) {
+    let obj = {};
+    for (let i = 0; i < arr.length; i++) {
+      const movie = arr[i];
+      obj[movie.id] = movie;
+    }
+    return obj;
+  }
+
+
   componentDidMount() {
-    // console.log(Object.keys(this.state).map(key => this.state[key]));
-    // console.log(this.props.createRating)
+
     this.props.fetchMovies().then(movies => {
       // console.log(Object.values(movies.movies)[0])
       const allMoviesArr = Object.values(movies.movies).sort((x,y) => x.title.split(" ")[0].localeCompare(y.title.split(" ")[0]));
-      const allMoviesObj = Object.assign({}, allMoviesArr);
+      // const allMoviesObj = Object.assign({}, allMoviesArr);
+      const allMoviesObj = this.movieListToObj(allMoviesArr); 
       this.masterMovieList = allMoviesObj;
       this.setState({movies: allMoviesObj});
     });
@@ -159,9 +170,9 @@ class Home extends React.Component {
     var answer = window.confirm("Delete Movie?")
     if (answer) {
       const movie = this.props.deleteMovie(id);
-      // console.log(this.state.movies);
       const refreshedMoviesArr = Object.values(this.state.movies).filter(movie => movie.id != id);
-      const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
+      // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
+      const refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
       this.setState({movies: refreshedMoviesObj});
     }
   }
@@ -188,7 +199,8 @@ class Home extends React.Component {
           return y.rating.rate - (-2);
         }
       });
-      const allMoviesObj = Object.assign({}, movieList);
+      // const allMoviesObj = Object.assign({}, movieList);
+      const allMoviesObj = this.movieListToObj(movieList);
       this.setState({movies: allMoviesObj, filters: {
         name: false,
         rating: true,

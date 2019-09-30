@@ -43987,6 +43987,7 @@ var Home = function (_React$Component) {
     _this.handleLeavePoster = _this.handleLeavePoster.bind(_this);
     _this.filter = _this.filter.bind(_this);
     _this.deleteMovie = _this.deleteMovie.bind(_this);
+    _this.movieListToObj = _this.movieListToObj.bind(_this);
 
     _this.masterMovieList;
 
@@ -44010,18 +44011,27 @@ var Home = function (_React$Component) {
   }
 
   _createClass(Home, [{
+    key: 'movieListToObj',
+    value: function movieListToObj(arr) {
+      var obj = {};
+      for (var i = 0; i < arr.length; i++) {
+        var movie = arr[i];
+        obj[movie.id] = movie;
+      }
+      return obj;
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var _this2 = this;
 
-      // console.log(Object.keys(this.state).map(key => this.state[key]));
-      // console.log(this.props.createRating)
       this.props.fetchMovies().then(function (movies) {
         // console.log(Object.values(movies.movies)[0])
         var allMoviesArr = Object.values(movies.movies).sort(function (x, y) {
           return x.title.split(" ")[0].localeCompare(y.title.split(" ")[0]);
         });
-        var allMoviesObj = Object.assign({}, allMoviesArr);
+        // const allMoviesObj = Object.assign({}, allMoviesArr);
+        var allMoviesObj = _this2.movieListToObj(allMoviesArr);
         _this2.masterMovieList = allMoviesObj;
         _this2.setState({ movies: allMoviesObj });
       });
@@ -44147,11 +44157,11 @@ var Home = function (_React$Component) {
       var answer = window.confirm("Delete Movie?");
       if (answer) {
         var movie = this.props.deleteMovie(id);
-        // console.log(this.state.movies);
         var refreshedMoviesArr = Object.values(this.state.movies).filter(function (movie) {
           return movie.id != id;
         });
-        var refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
+        // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
+        var refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
         this.setState({ movies: refreshedMoviesObj });
       }
     }
@@ -44179,7 +44189,8 @@ var Home = function (_React$Component) {
             return y.rating.rate - -2;
           }
         });
-        var allMoviesObj = Object.assign({}, movieList);
+        // const allMoviesObj = Object.assign({}, movieList);
+        var allMoviesObj = this.movieListToObj(movieList);
         this.setState({ movies: allMoviesObj, filters: {
             name: false,
             rating: true,
