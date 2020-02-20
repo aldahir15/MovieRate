@@ -29,6 +29,17 @@ class Api::UsersController < ApplicationController
         # end
     end
 
+    def movies
+        print("LOCO")
+        print(params[:user_id])
+        user = User.find(params[:user_id])
+        @movies = user.rating.map { |rating|
+          Movie.find(rating.movie_id)
+        }
+        print(@movies)
+        print("NOTHING VATO")
+    end
+
         private
     def user_params
         params.require(:user).permit(:username, :password)
