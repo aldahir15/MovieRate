@@ -45,6 +45,9 @@ class User < ApplicationRecord
       self.session_token
     end
   
-    has_many :ratings
+    has_many :rating,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Rating
 
 end
