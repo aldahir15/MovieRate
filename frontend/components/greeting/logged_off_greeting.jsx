@@ -19,6 +19,9 @@ class Greeting extends React.Component {
       window.addEventListener("scroll", this.handleScroll);
     }
     // window.removeEventListener("scroll", this.handleScroll);
+    const title = document.querySelector(".logo-title-h3");
+    title.style.opacity = "100%"
+    console.log(title);
   }
 
   handleScroll(){
@@ -36,7 +39,13 @@ class Greeting extends React.Component {
   render(){
     return (
     <div>
-      <div className="greeting-page-title">WELCOME TO MOVIE RATES</div>
+      <Parallax>
+        <div className="login-img-div">
+          <div className="logo-img">
+            <h3 className="logo-title-h3">Movie Rates</h3>
+          </div>
+        </div>
+      </Parallax>
     </div>);
   }
 }

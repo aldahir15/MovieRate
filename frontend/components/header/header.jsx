@@ -20,19 +20,18 @@ class Header extends React.Component {
   loggedin(){
     return (
       <div className="logout-header">
-        <div className="button-container">
-          <Link to="#" className="myButton" onClick={this.logout}>Log Out</Link>
+        <div>
+          <ul className="login-ul-nav">
+            <Link to="/home" className="home-button"><p>Home</p></Link>
+          </ul>
         </div>
-        <p className="hello-user">HELLO {this.props.user.username}</p>
-        <div className="divider2"></div>
-        <ul className="login-ul-nav">
-          <Link to="/home" className="home-button"><p>Home</p></Link>
-          <Link to="/train"><p>Train</p></Link>
-          <Link to="/explore"><p>Explore</p></Link>
-          <Link to="/connect"><p>Connect</p></Link>
-        </ul>
-          <img src="http://res.cloudinary.com/ddgt25kwb/image/upload/v1505944279/logo_cpwpsb.png"
-          onClick={() => document.getElementsByClassName("home-button")[0].click()}/>
+        <div className="logout-and-name">
+          <p className="hello-user">HELLO {this.props.user.username}</p>
+          <div className="login-divider"></div>
+          <div className="button-container">
+            <Link to="#" className="log-out-button" onClick={this.logout}>Log Out</Link>
+          </div>
+        </div>
       </div>
     );
   }
@@ -40,11 +39,9 @@ class Header extends React.Component {
   loggedout(){
     return (
       <div className="login-header">
-        <LoginModal action={SigninFormContainer} className="login-button"/>
-        <LoginModal className="demo-button" action={SigninFormContainer} demo={true}/>
-        <div className="divider"></div>
-        <LoginModal action={SignupFormContainer} className="signup-button"/>
-        <p>HERE TO JOIN?</p>
+        <LoginModal action={SigninFormContainer} className="login-button" id="header-button"/>
+        <div className="login-divider"></div>
+        <LoginModal action={SignupFormContainer} className="signup-button" id="header-button"/>
       </div>
     );
   }

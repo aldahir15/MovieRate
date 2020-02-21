@@ -12,11 +12,11 @@ import GreetingContainer from './greeting/greeting_container';
 
 const App = () => {
   return (
-    <div>
+    <div className = "app-div">
       <HeaderContainer />
       <Switch>
         <LoggedinRoute exact path="/create" component={MovieContainer} />
-        <LoggedinRoute exact path="/movies" component={HomeContainer} />
+        <LoggedinRoute exact path="/home" component={HomeContainer} />
         <RequireLoginRoute exact path="/" component={GreetingContainer} />  
       </Switch>
     </div>

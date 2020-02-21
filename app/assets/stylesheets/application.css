@@ -354,3 +354,83 @@ body {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+
+.login-img-div {
+  /* display: none; */
+  width: 100%;
+}
+
+.login-header {
+  display: flex;
+  /* background-color: white; */
+  flex-flow: row-reverse;
+  padding-right: 20px;
+  /* height: 55px; */
+  padding-top: 15px;
+
+  color: white;
+  position: absolute;
+  top: 45px;
+  z-index: 9999999;
+  width: 73%;
+}
+
+.login-button, .signup-button {
+  font-size: 25px !important;
+}
+
+.logout-header {
+  display: flex;
+  background-color: white;
+  /* flex-flow: row-reverse; */
+  padding-right: 20px;
+  height: 55px;
+  padding-top: 15px;
+  justify-content: space-between;
+}
+
+.login-divider {
+  width: 40px;
+}
+
+.signup-button, .login-button, .log-out-button, .home-button, .hello-user {
+  font-size: large;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hello-user {
+  cursor: initial;
+}
+
+.logo-img {
+  background-image: url("https://res.cloudinary.com/ddgt25kwb/image/upload/v1582321379/admission-2974645_1920_al8p5q.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1000px;
+}
+
+.logo-img h3 {
+  margin-top: 0;
+  color: white;
+  font-size: 170px;
+  display: flex;
+  justify-content: center;
+  padding-top: 400px;
+  transition: opacity 1.5s ease-in;
+  opacity: 0;
+}
+
+.app-div {
+  width: 100%;
+}
+
+.hello-user, .login-ul-nav, .home-button p {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.logout-and-name {
+  display: flex;
+}
+
