@@ -214,10 +214,6 @@ class Home extends React.Component {
   render() {
     return (
     <div id = "main-container">
-      <div className="HomeHeader">
-        <h1>Movie Ratings</h1>
-        <HomeModal action={MovieContainer} />
-      </div>
       <div className="filterMovies">
         <div className={`${this.state.filters.name ? "filter-active" : "filter"} filter-name`} id="filter-name" onClick={this.filter}>
          Name
@@ -260,3 +256,8 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+{/* <div className="HomeHeader">
+  <h1>Movie Ratings</h1>
+  <HomeModal action={MovieContainer} />
+</div> */}

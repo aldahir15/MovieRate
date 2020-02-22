@@ -5,6 +5,10 @@ import Modal from 'react-modal';
 import LoginModal from './loginModal';
 import SigninFormContainer from '../session_form/signin_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+import HomeModal from '../home/home_modal';
+import MovieContainer from '../movie/movie_container';
+
+
 
 
 class Header extends React.Component {
@@ -19,15 +23,22 @@ class Header extends React.Component {
 
   loggedin(){
     return (
-      <div className="logout-header">
-        <div>
-          <ul className="login-ul-nav">
-            <Link to="/home" className="home-button"><p>Home</p></Link>
-          </ul>
+      <div className="loggedIn-home-header">
+        <div className="HomeHeader">
+          <div className="left-login-header">
+            <h1>Movie Ratings</h1>
+            <div class="left-login-buttons">
+              <ul className="login-ul-nav">
+                <Link to="/home" className="home-button"><p className="nav-items">Home</p></Link>
+              </ul>
+            </div>
+          </div>
+          <HomeModal action={MovieContainer} />
         </div>
         <div className="logout-and-name">
           <p className="hello-user">HELLO {this.props.user.username}</p>
           <div className="login-divider"></div>
+          <div className="login-divider2"></div>
           <div className="button-container">
             <Link to="#" className="log-out-button" onClick={this.logout}>Log Out</Link>
           </div>
@@ -54,3 +65,18 @@ export default Header;
 
 //onClick={() =>
 //  this.props.login({username: "demo", password: "password"})}
+
+{/* <div className="logout-header">
+  <div>
+    <ul className="login-ul-nav">
+      <Link to="/home" className="home-button"><p>Home</p></Link>
+    </ul>
+  </div>
+  <div className="logout-and-name">
+    <p className="hello-user">HELLO {this.props.user.username}</p>
+    <div className="login-divider"></div>
+    <div className="button-container">
+      <Link to="#" className="log-out-button" onClick={this.logout}>Log Out</Link>
+    </div>
+  </div>
+</div> */}

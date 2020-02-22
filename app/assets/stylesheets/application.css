@@ -389,8 +389,13 @@ body {
   justify-content: space-between;
 }
 
-.login-divider {
-  width: 40px;
+.login-divider, .login-divider2 {
+  width: 20px;
+}
+
+.login-divider2 {
+  border-left: 2px solid white;
+  margin-bottom: 35px;
 }
 
 .signup-button, .login-button, .log-out-button, .home-button, .hello-user {
@@ -432,5 +437,48 @@ body {
 
 .logout-and-name {
   display: flex;
+  white-space: nowrap;
+  padding-top: 35px;
+  padding-right: 15px;
 }
 
+.loggedIn-home-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.HomeHeader {
+  width: 100%;
+}
+
+.left-login-header {
+  display: flex;
+}
+
+.login-ul-nav, .home-button p {
+  margin-bottom: 0;
+}
+
+.left-login-buttons {
+  padding-top: 15px;
+}
+
+.nav-items {
+  color: white;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding: 5px 11px 0 11px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+}
+
+.nav-items:hover {
+  background-color: rgb(34, 34, 34);
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+
+.hello-user, .log-out-button {
+  color: white;
+}

@@ -44761,16 +44761,6 @@ var Home = function (_React$Component) {
         { id: 'main-container' },
         _react2.default.createElement(
           'div',
-          { className: 'HomeHeader' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            'Movie Ratings'
-          ),
-          _react2.default.createElement(_home_modal2.default, { action: _movie_container2.default })
-        ),
-        _react2.default.createElement(
-          'div',
           { className: 'filterMovies' },
           _react2.default.createElement(
             'div',
@@ -44850,6 +44840,12 @@ var Home = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Home;
+
+
+{/* <div className="HomeHeader">
+   <h1>Movie Ratings</h1>
+   <HomeModal action={MovieContainer} />
+  </div> */}
 
 /***/ }),
 /* 131 */
@@ -45827,6 +45823,14 @@ var _signup_form_container = __webpack_require__(57);
 
 var _signup_form_container2 = _interopRequireDefault(_signup_form_container);
 
+var _home_modal = __webpack_require__(131);
+
+var _home_modal2 = _interopRequireDefault(_home_modal);
+
+var _movie_container = __webpack_require__(49);
+
+var _movie_container2 = _interopRequireDefault(_movie_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45857,23 +45861,37 @@ var Header = function (_React$Component) {
     value: function loggedin() {
       return _react2.default.createElement(
         'div',
-        { className: 'logout-header' },
+        { className: 'loggedIn-home-header' },
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'HomeHeader' },
           _react2.default.createElement(
-            'ul',
-            { className: 'login-ul-nav' },
+            'div',
+            { className: 'left-login-header' },
             _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/home', className: 'home-button' },
+              'h1',
+              null,
+              'Movie Ratings'
+            ),
+            _react2.default.createElement(
+              'div',
+              { 'class': 'left-login-buttons' },
               _react2.default.createElement(
-                'p',
-                null,
-                'Home'
+                'ul',
+                { className: 'login-ul-nav' },
+                _react2.default.createElement(
+                  _reactRouterDom.Link,
+                  { to: '/home', className: 'home-button' },
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'nav-items' },
+                    'Home'
+                  )
+                )
               )
             )
-          )
+          ),
+          _react2.default.createElement(_home_modal2.default, { action: _movie_container2.default })
         ),
         _react2.default.createElement(
           'div',
@@ -45885,6 +45903,7 @@ var Header = function (_React$Component) {
             this.props.user.username
           ),
           _react2.default.createElement('div', { className: 'login-divider' }),
+          _react2.default.createElement('div', { className: 'login-divider2' }),
           _react2.default.createElement(
             'div',
             { className: 'button-container' },
@@ -45922,6 +45941,21 @@ exports.default = Header;
 
 //onClick={() =>
 //  this.props.login({username: "demo", password: "password"})}
+
+{/* <div className="logout-header">
+   <div>
+     <ul className="login-ul-nav">
+       <Link to="/home" className="home-button"><p>Home</p></Link>
+     </ul>
+   </div>
+   <div className="logout-and-name">
+     <p className="hello-user">HELLO {this.props.user.username}</p>
+     <div className="login-divider"></div>
+     <div className="button-container">
+       <Link to="#" className="log-out-button" onClick={this.logout}>Log Out</Link>
+     </div>
+   </div>
+  </div> */}
 
 /***/ }),
 /* 139 */
