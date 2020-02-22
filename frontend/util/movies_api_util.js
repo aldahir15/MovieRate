@@ -5,6 +5,12 @@ export const fetchMovies = () => {
   });
 };
 
+export const fetchUserMovies = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/users/${id}/movies/`
+  });
+};
 export const fetchMovie = (id) => {
   return $.ajax({
     method: 'GET',

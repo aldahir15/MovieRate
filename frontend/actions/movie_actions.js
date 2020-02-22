@@ -10,6 +10,12 @@ export const fetchMovies = () => dispatch => (
   ))
 );
 
+export const fetchUserMovies = (id) => dispatch => (
+  MovieAPIUtil.fetchUserMovies(id).then(movies => (
+    dispatch(receiveMovies(movies))
+  ))
+);
+
 export const fetchMovie = (id) => dispatch => (
   MovieAPIUtil.fetchMovie(id).then(movie => (
     dispatch(receiveMovie(movie))

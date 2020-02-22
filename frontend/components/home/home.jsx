@@ -49,13 +49,22 @@ class Home extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetchMovies().then(movies => {
+    // this.props.fetchMovies().then(movies => {
+    //   // console.log(Object.values(movies.movies)[0])
+    //   const allMoviesArr = Object.values(movies.movies).sort((x,y) => x.title.split(" ")[0].localeCompare(y.title.split(" ")[0]));
+    //   // const allMoviesObj = Object.assign({}, allMoviesArr);
+    //   const allMoviesObj = this.movieListToObj(allMoviesArr); 
+    //   this.masterMovieList = allMoviesObj;
+    //   this.setState({movies: allMoviesObj});
+    // });
+    const userId = this.props.user.currentUser.id;
+    this.props.fetchUserMovies(userId).then(movies => {
       // console.log(Object.values(movies.movies)[0])
-      const allMoviesArr = Object.values(movies.movies).sort((x,y) => x.title.split(" ")[0].localeCompare(y.title.split(" ")[0]));
+      const allMoviesArr = Object.values(movies.movies).sort((x, y) => x.title.split(" ")[0].localeCompare(y.title.split(" ")[0]));
       // const allMoviesObj = Object.assign({}, allMoviesArr);
-      const allMoviesObj = this.movieListToObj(allMoviesArr); 
+      const allMoviesObj = this.movieListToObj(allMoviesArr);
       this.masterMovieList = allMoviesObj;
-      this.setState({movies: allMoviesObj});
+      this.setState({ movies: allMoviesObj });
     });
   }
 
