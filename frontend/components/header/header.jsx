@@ -26,7 +26,7 @@ class Header extends React.Component {
       <div className="loggedIn-home-header">
         <div className="HomeHeader">
           <div className="left-login-header">
-            <h1>Movie Ratings</h1>
+            <h1>Movie Rates</h1>
             <div class="left-login-buttons">
               <ul className="login-ul-nav">
                 <Link to="/home" className="home-button"><p className="nav-items">Home</p></Link>

@@ -45871,7 +45871,7 @@ var Header = function (_React$Component) {
             _react2.default.createElement(
               'h1',
               null,
-              'Movie Ratings'
+              'Movie Rates'
             ),
             _react2.default.createElement(
               'div',

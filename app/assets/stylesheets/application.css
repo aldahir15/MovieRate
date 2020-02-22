@@ -105,7 +105,7 @@ body {
 
  #main-container {
    display: flex;
-   width: 80%;
+   width: 85%;
    flex-direction: column;
    min-width: 1000px;
    margin: 0 auto;
@@ -445,6 +445,8 @@ body {
 .loggedIn-home-header {
   display: flex;
   justify-content: space-between;
+
+  padding-left: 5%;
 }
 
 .HomeHeader {
