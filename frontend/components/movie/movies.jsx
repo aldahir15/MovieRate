@@ -66,12 +66,14 @@ class Movies extends React.Component {
 
   saveOMDBMovie(e) {
     e.preventDefault();
+    const userId = this.props.user.currentUser.id;
     const movie = {
       title: this.state.fetchedMovieTitle,
       description: this.state.fetchedMovieDescription,
       img: this.state.fetchedMovieImg,
       year: this.state.fetchedMovieYear,
-      genre: this.state.fetchedMovieGenre
+      genre: this.state.fetchedMovieGenre,
+      user_id: userId
     };
 
 

@@ -4,9 +4,11 @@ import { fetchMovies, fetchMovie, createMovie, deleteMovie, fetchOMDBMovie } fro
 import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state) => {
+  const user = state.session;
   const movies = state.movies;
   const movie = state.movie;
   return {
+    user,
     movies,
     movie
   };

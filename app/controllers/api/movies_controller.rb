@@ -15,6 +15,8 @@ class Api::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
+      @rating = Rating.new(movie_id: @movie.id, user_id: rating_params[:user_id])
+      @rating.save
     else
       flash[:errors] = @movie.errors.full_messages
       render :new
@@ -41,6 +43,11 @@ class Api::MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :img, :year, :genr, :imd_rating)
+    params.require(:movie).permit(:title, :description, :img, :year, :genre, :imd_rating)
   end
+
+  def rating_params
+    params.require(:movie).permit(:user_id)
+  end
+
 end

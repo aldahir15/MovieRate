@@ -19475,9 +19475,11 @@ var _reactRouterDom = __webpack_require__(4);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
+  var user = state.session;
   var movies = state.movies;
   var movie = state.movie;
   return {
+    user: user,
     movies: movies,
     movie: movie
   };
@@ -44426,12 +44428,14 @@ var Movies = function (_React$Component) {
     key: "saveOMDBMovie",
     value: function saveOMDBMovie(e) {
       e.preventDefault();
+      var userId = this.props.user.currentUser.id;
       var movie = {
         title: this.state.fetchedMovieTitle,
         description: this.state.fetchedMovieDescription,
         img: this.state.fetchedMovieImg,
         year: this.state.fetchedMovieYear,
-        genre: this.state.fetchedMovieGenre
+        genre: this.state.fetchedMovieGenre,
+        user_id: userId
       };
 
       this.props.createMovie(movie).then(function (movie) {
