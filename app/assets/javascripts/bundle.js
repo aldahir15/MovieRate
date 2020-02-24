@@ -44419,7 +44419,8 @@ var Movies = function (_React$Component) {
             fetchedMovieRatingIMDB: e.movies.Ratings[0] ? e.movies.Ratings[0].Value : e.movies.imdbRating,
             fetchedMovieRatingRottenTomatoes: e.movies.Ratings[1] ? e.movies.Ratings[1].Value : "",
             fetchedMovieImg: e.movies.Poster,
-            fetchedMovieDescription: e.movies.Plot
+            fetchedMovieDescription: e.movies.Plot,
+            fetchedMovieIMDBID: e.movies.imdbID
           });
         });
       }
@@ -44435,6 +44436,7 @@ var Movies = function (_React$Component) {
         img: this.state.fetchedMovieImg,
         year: this.state.fetchedMovieYear,
         genre: this.state.fetchedMovieGenre,
+        imdb_id: this.state.fetchedMovieIMDBID,
         user_id: userId
       };
 
