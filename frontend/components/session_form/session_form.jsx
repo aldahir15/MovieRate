@@ -41,25 +41,48 @@ class SessionForm extends React.Component {
     );
   }
 
+  showFooter() {
+    if (this.props.text === "Log In") {
+      return (
+        <div className="session-footer">
+          <div className="session-footer-message">
+            <p>To create an account, <a href="" target="_blank">click here</a></p>
+            </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="session-footer">
+          <div className="session-footer-message">
+            <p>To Log In, <a href="" target="_blank">click here</a></p>
+            </div>
+        </div>
+      );     
+    }
+  }
+
 
   render(){
       return (
         <div className="session-form-div">
-        <div className="session-exit-button-container">
-        <img src = 'http://res.cloudinary.com/ddgt25kwb/image/upload/c_scale,w_54/v1506464706/9982_23980_cancel_close_exit_1_p3x21t.png'
-        onClick={this.props.closeModal}></img>
+        <div className="session-form-inner-div">
+         <h1>{this.props.text}</h1>
         </div>
-        <h1>{this.props.text}</h1>
-        <form onSubmit={this.handleSubmit} className="session-form">
-        {this.showErrors()}
-        <input type="text" onChange={this.update("username")}
-        placeholder="Username" className="session-inputs" value={this.state.username} />
-        <div className="height-divider"></div>
-        <input type="password" onChange={this.update("password")}
-        placeholder="Password" className="session-inputs" value={this.state.password} />
-        <div className="height-divider"></div>
-        <input type="submit" value="Submit" className="submit-session"/>
-        </form>
+        <div className="session-form-inner-div">
+          <form onSubmit={this.handleSubmit} className="session-form">
+          {this.showErrors()}
+          <label className="session-label">Username</label>
+          <input type="text" onChange={this.update("username")}
+          placeholder="Username" className="session-inputs" value={this.state.username} />
+          <div className="height-divider"></div>
+          <label className="session-label">Password</label>
+          <input type="password" onChange={this.update("password")}
+          placeholder="Password" className="session-inputs" value={this.state.password} />
+          <div className="height-divider"></div>
+          <input type="submit" value="Submit" className="submit-session"/>
+          </form>
+        </div>
+        {this.showFooter()}
         </div>
       );
     }

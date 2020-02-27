@@ -13,7 +13,7 @@ const customStyles = {
     overflow              : 'none',
     transform             : 'translate(-50%, -50%)',
     padding               : '0',
-    width                 : '30%',
+    width                 : 'auto !important',
     'borderRadius'        : '5px'
   }
 };

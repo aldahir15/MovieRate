@@ -484,3 +484,99 @@ body {
 .hello-user, .log-out-button {
   color: white;
 }
+
+.session-form-div {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 4px 0 rgba(0,0,0,0.15);
+  width: 420px;
+  justify-content: center;
+}
+
+.session-form-div h1 {
+  display: flex;
+  /* justify-content: left; */
+  font-family: sans-serif;
+  padding-left: 15px;
+  width: 350px;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px;
+  background-color: white;
+  padding: 15px;
+  padding-top: 0;
+}
+
+.submit-session {
+  margin: 0 !important;
+  height: 56px;
+  width: 100%;
+  border-radius: 4px;
+  border: 0;
+  background-color: #040405;
+  font-family: Graphik;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  cursor: pointer;
+}
+
+.session-inputs {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  height: 50px;
+  width: 100%;
+  border: 2px solid #B9BFCB;
+  border-radius: 4px;
+  background-color: #FFF;
+  font-size: 14px;
+  line-height: 15px;
+  text-indent: 15px;
+}
+
+.session-label {
+  height: 12px;
+  color: #636E85;
+  font-size: 12px;
+  font-weight: 600;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  line-height: 13px;
+  float: left;
+}
+
+.session-form-inner-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: initial;
+}
+
+.session-footer {
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f9;
+  border-top: 1px solid gray;
+  padding: 10px 0px 10px 0px;
+}
+
+.session-footer-message {
+  color: #655d5d;
+}
+
+.session-footer-message a {
+  color: rgb(230, 52, 86);
+  text-decoration: none;
+}

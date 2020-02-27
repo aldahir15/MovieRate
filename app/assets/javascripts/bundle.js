@@ -21527,6 +21527,49 @@ var SessionForm = function (_React$Component) {
       );
     }
   }, {
+    key: 'showFooter',
+    value: function showFooter() {
+      if (this.props.text === "Log In") {
+        return _react2.default.createElement(
+          'div',
+          { className: 'session-footer' },
+          _react2.default.createElement(
+            'div',
+            { className: 'session-footer-message' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'To create an account, ',
+              _react2.default.createElement(
+                'a',
+                { href: '', target: '_blank' },
+                'click here'
+              )
+            )
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: 'session-footer' },
+          _react2.default.createElement(
+            'div',
+            { className: 'session-footer-message' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'To Log In, ',
+              _react2.default.createElement(
+                'a',
+                { href: '', target: '_blank' },
+                'click here'
+              )
+            )
+          )
+        );
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -21534,27 +21577,40 @@ var SessionForm = function (_React$Component) {
         { className: 'session-form-div' },
         _react2.default.createElement(
           'div',
-          { className: 'session-exit-button-container' },
-          _react2.default.createElement('img', { src: 'http://res.cloudinary.com/ddgt25kwb/image/upload/c_scale,w_54/v1506464706/9982_23980_cancel_close_exit_1_p3x21t.png',
-            onClick: this.props.closeModal })
+          { className: 'session-form-inner-div' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            this.props.text
+          )
         ),
         _react2.default.createElement(
-          'h1',
-          null,
-          this.props.text
+          'div',
+          { className: 'session-form-inner-div' },
+          _react2.default.createElement(
+            'form',
+            { onSubmit: this.handleSubmit, className: 'session-form' },
+            this.showErrors(),
+            _react2.default.createElement(
+              'label',
+              { className: 'session-label' },
+              'Username'
+            ),
+            _react2.default.createElement('input', { type: 'text', onChange: this.update("username"),
+              placeholder: 'Username', className: 'session-inputs', value: this.state.username }),
+            _react2.default.createElement('div', { className: 'height-divider' }),
+            _react2.default.createElement(
+              'label',
+              { className: 'session-label' },
+              'Password'
+            ),
+            _react2.default.createElement('input', { type: 'password', onChange: this.update("password"),
+              placeholder: 'Password', className: 'session-inputs', value: this.state.password }),
+            _react2.default.createElement('div', { className: 'height-divider' }),
+            _react2.default.createElement('input', { type: 'submit', value: 'Submit', className: 'submit-session' })
+          )
         ),
-        _react2.default.createElement(
-          'form',
-          { onSubmit: this.handleSubmit, className: 'session-form' },
-          this.showErrors(),
-          _react2.default.createElement('input', { type: 'text', onChange: this.update("username"),
-            placeholder: 'Username', className: 'session-inputs', value: this.state.username }),
-          _react2.default.createElement('div', { className: 'height-divider' }),
-          _react2.default.createElement('input', { type: 'password', onChange: this.update("password"),
-            placeholder: 'Password', className: 'session-inputs', value: this.state.password }),
-          _react2.default.createElement('div', { className: 'height-divider' }),
-          _react2.default.createElement('input', { type: 'submit', value: 'Submit', className: 'submit-session' })
-        )
+        this.showFooter()
       );
     }
   }]);
@@ -46042,7 +46098,7 @@ var customStyles = {
     overflow: 'none',
     transform: 'translate(-50%, -50%)',
     padding: '0',
-    width: '30%',
+    width: 'auto !important',
     'borderRadius': '5px'
   }
 };
