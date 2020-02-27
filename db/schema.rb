@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200220042332) do
+ActiveRecord::Schema.define(version: 20200227060032) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 20200220042332) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
+    t.string "email"
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

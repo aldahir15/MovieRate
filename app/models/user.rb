@@ -11,8 +11,11 @@
 #
 
 class User < ApplicationRecord
+    before_create :confirmation_token
+
     validates :username, :password_digest, :session_token, presence: true
     validates :username, uniqueness: true
+    validates :email, uniqueness: true
     validates :password, length: {minimum: 6, allow_nil: true}
     after_initialize :ensure_session_token
     attr_reader :password
@@ -43,6 +46,19 @@ class User < ApplicationRecord
       self.session_token = SecureRandom.urlsafe_base64
       self.save!
       self.session_token
+    end
+
+    def email_activate
+      self.email_confirmed = true
+      self.confirm_token = nil
+      save!(:validate => false)
+    end
+
+    private
+    def confirmation_token
+      if self.confirm_token.blank?
+          self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
     end
   
     has_many :rating,

@@ -21485,7 +21485,8 @@ var SessionForm = function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_this);
 
     _this.state = { username: _this.props.user.username,
-      password: _this.props.user.password };
+      password: _this.props.user.password,
+      email: _this.props.user.email };
     return _this;
   }
 
@@ -21525,6 +21526,73 @@ var SessionForm = function (_React$Component) {
           );
         })
       );
+    }
+  }, {
+    key: 'showMainContent',
+    value: function showMainContent() {
+      if (this.props.text === "Log In") {
+        return _react2.default.createElement(
+          'div',
+          { className: 'session-form-inner-div' },
+          _react2.default.createElement(
+            'form',
+            { onSubmit: this.handleSubmit, className: 'session-form' },
+            this.showErrors(),
+            _react2.default.createElement(
+              'label',
+              { className: 'session-label' },
+              'Username'
+            ),
+            _react2.default.createElement('input', { type: 'text', onChange: this.update("username"),
+              placeholder: 'Username', className: 'session-inputs', value: this.state.username }),
+            _react2.default.createElement('div', { className: 'height-divider' }),
+            _react2.default.createElement(
+              'label',
+              { className: 'session-label' },
+              'Password'
+            ),
+            _react2.default.createElement('input', { type: 'password', onChange: this.update("password"),
+              placeholder: 'Password', className: 'session-inputs', value: this.state.password }),
+            _react2.default.createElement('div', { className: 'height-divider' }),
+            _react2.default.createElement('input', { type: 'submit', value: 'Submit', className: 'submit-session' })
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: 'session-form-inner-div' },
+          _react2.default.createElement(
+            'form',
+            { onSubmit: this.handleSubmit, className: 'session-form' },
+            this.showErrors(),
+            _react2.default.createElement(
+              'label',
+              { className: 'session-label' },
+              'Email'
+            ),
+            _react2.default.createElement('input', { type: 'text', onChange: this.update("email"),
+              placeholder: 'Email', className: 'session-inputs', value: this.state.email }),
+            _react2.default.createElement('div', { className: 'height-divider' }),
+            _react2.default.createElement(
+              'label',
+              { className: 'session-label' },
+              'Username'
+            ),
+            _react2.default.createElement('input', { type: 'text', onChange: this.update("username"),
+              placeholder: 'Username', className: 'session-inputs', value: this.state.username }),
+            _react2.default.createElement('div', { className: 'height-divider' }),
+            _react2.default.createElement(
+              'label',
+              { className: 'session-label' },
+              'Password'
+            ),
+            _react2.default.createElement('input', { type: 'password', onChange: this.update("password"),
+              placeholder: 'Password', className: 'session-inputs', value: this.state.password }),
+            _react2.default.createElement('div', { className: 'height-divider' }),
+            _react2.default.createElement('input', { type: 'submit', value: 'Submit', className: 'submit-session' })
+          )
+        );
+      }
     }
   }, {
     key: 'showFooter',
@@ -21584,32 +21652,7 @@ var SessionForm = function (_React$Component) {
             this.props.text
           )
         ),
-        _react2.default.createElement(
-          'div',
-          { className: 'session-form-inner-div' },
-          _react2.default.createElement(
-            'form',
-            { onSubmit: this.handleSubmit, className: 'session-form' },
-            this.showErrors(),
-            _react2.default.createElement(
-              'label',
-              { className: 'session-label' },
-              'Username'
-            ),
-            _react2.default.createElement('input', { type: 'text', onChange: this.update("username"),
-              placeholder: 'Username', className: 'session-inputs', value: this.state.username }),
-            _react2.default.createElement('div', { className: 'height-divider' }),
-            _react2.default.createElement(
-              'label',
-              { className: 'session-label' },
-              'Password'
-            ),
-            _react2.default.createElement('input', { type: 'password', onChange: this.update("password"),
-              placeholder: 'Password', className: 'session-inputs', value: this.state.password }),
-            _react2.default.createElement('div', { className: 'height-divider' }),
-            _react2.default.createElement('input', { type: 'submit', value: 'Submit', className: 'submit-session' })
-          )
-        ),
+        this.showMainContent(),
         this.showFooter()
       );
     }

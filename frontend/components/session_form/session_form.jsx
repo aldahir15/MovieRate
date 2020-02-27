@@ -9,7 +9,8 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {username: this.props.user.username,
-                  password: this.props.user.password};
+                  password: this.props.user.password,
+                  email: this.props.user.email};
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,6 +42,48 @@ class SessionForm extends React.Component {
     );
   }
 
+  showMainContent() {
+    if (this.props.text === "Log In") {
+      return (
+        <div className="session-form-inner-div">
+          <form onSubmit={this.handleSubmit} className="session-form">
+            {this.showErrors()}
+            <label className="session-label">Username</label>
+            <input type="text" onChange={this.update("username")}
+              placeholder="Username" className="session-inputs" value={this.state.username} />
+            <div className="height-divider"></div>
+            <label className="session-label">Password</label>
+            <input type="password" onChange={this.update("password")}
+              placeholder="Password" className="session-inputs" value={this.state.password} />
+            <div className="height-divider"></div>
+            <input type="submit" value="Submit" className="submit-session" />
+          </form>
+        </div>
+      )
+    } else {
+      return (
+        <div className="session-form-inner-div">
+          <form onSubmit={this.handleSubmit} className="session-form">
+            {this.showErrors()}
+            <label className="session-label">Email</label>
+            <input type="text" onChange={this.update("email")}
+              placeholder="Email" className="session-inputs" value={this.state.email} />
+            <div className="height-divider"></div>
+            <label className="session-label">Username</label>
+            <input type="text" onChange={this.update("username")}
+              placeholder="Username" className="session-inputs" value={this.state.username} />
+            <div className="height-divider"></div>
+            <label className="session-label">Password</label>
+            <input type="password" onChange={this.update("password")}
+              placeholder="Password" className="session-inputs" value={this.state.password} />
+            <div className="height-divider"></div>
+            <input type="submit" value="Submit" className="submit-session" />
+          </form>
+        </div>
+      )
+    }
+  }
+
   showFooter() {
     if (this.props.text === "Log In") {
       return (
@@ -68,20 +111,7 @@ class SessionForm extends React.Component {
         <div className="session-form-inner-div">
          <h1>{this.props.text}</h1>
         </div>
-        <div className="session-form-inner-div">
-          <form onSubmit={this.handleSubmit} className="session-form">
-          {this.showErrors()}
-          <label className="session-label">Username</label>
-          <input type="text" onChange={this.update("username")}
-          placeholder="Username" className="session-inputs" value={this.state.username} />
-          <div className="height-divider"></div>
-          <label className="session-label">Password</label>
-          <input type="password" onChange={this.update("password")}
-          placeholder="Password" className="session-inputs" value={this.state.password} />
-          <div className="height-divider"></div>
-          <input type="submit" value="Submit" className="submit-session"/>
-          </form>
-        </div>
+        {this.showMainContent()}
         {this.showFooter()}
         </div>
       );
