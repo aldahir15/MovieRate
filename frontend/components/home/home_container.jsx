@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Home from './home.jsx';
 import { fetchMovies, fetchUserMovies, fetchMovie, createMovie, deleteMovie, fetchOMDBMovie } from '../../actions/movie_actions';
-import { createRating, updateRating } from '../../actions/rating_actions';
+import { createRating, updateRating, deleteRating } from '../../actions/rating_actions';
 import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state) => {
@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserMovies: (id) => dispatch(fetchUserMovies(id)),
   fetchMovie: (id) => dispatch(fetchMovie(id)),
   deleteMovie: (id) => dispatch(deleteMovie(id)),
+  deleteRating: (id) => dispatch(deleteRating(id)),
   fetchOMDBMovie: (title, year) => dispatch(fetchOMDBMovie(title, year)),
   createMovie: (title) => dispatch(createMovie(title)),
   createRating: (rating) => dispatch(createRating(rating)),

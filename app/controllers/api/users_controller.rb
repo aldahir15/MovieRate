@@ -35,8 +35,8 @@ class Api::UsersController < ApplicationController
         print("LOCO")
         print(params[:user_id])
         user = User.find(params[:user_id])
-        @movies = user.rating.map { |rating|
-          Movie.find(rating.movie_id)
+        @movies_and_ratings = user.rating.map { |rating|
+          [Movie.find(rating.movie_id), rating]
         }
         print(@movies)
         print("NOTHING VATO")

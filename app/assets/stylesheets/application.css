@@ -579,4 +579,18 @@ body {
 .session-footer-message a {
   color: rgb(230, 52, 86);
   text-decoration: none;
+  cursor: pointer;
+}
+
+.signed-up-message {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0px 25px 25px;
+}
+
+#sign-up {
+  /* height: 570px;
+  justify-content: space-between; */
+  transition: .5s ease;
+
 }

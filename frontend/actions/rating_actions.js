@@ -14,6 +14,13 @@ export const updateRating = (id, rating) => dispatch => (
   ))
 );
 
+export const deleteRating = rating => dispatch => (
+  RatingAPIUtil.deleteRating(rating).then(() => (
+    dispatch(receiveRating({}))
+  ))
+);
+
+
 export const receiveRating = rating => ({
   type: RECEIVE_RATING,
   rating

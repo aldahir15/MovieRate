@@ -97,7 +97,7 @@ class Home extends React.Component {
 
   handleClickImg(e) {
     const key = e.target.parentElement.parentElement.id;
-    if (key && this.state.movies[key].rating) {
+    if (key && this.state.movies[key].rating.id) {
       this.handleUpdateRate(e);
     } else {
       this.handleCreateRate(e);
@@ -129,7 +129,7 @@ class Home extends React.Component {
 
   handleUpdateRate(e) {
     const movieKey = e.target.parentElement.parentElement.id;
-    const ratingId = this.state.movies[movieKey].rating.id
+    const ratingId = this.state.movies[movieKey].rating.id;
     let rate;
     if (e.target.id === "good") {
       rate = 1;
@@ -175,11 +175,13 @@ class Home extends React.Component {
   }
 
   deleteMovie (e) {
-    const id = e.target.id;
+    const movie_id = e.target.id;
+    const rating_id = Object.values(this.state.movies).find(movie => movie.id == movie_id).rating.id;
     var answer = window.confirm("Delete Movie?")
     if (answer) {
-      const movie = this.props.deleteMovie(id);
-      const refreshedMoviesArr = Object.values(this.state.movies).filter(movie => movie.id != id);
+      // const movie = this.props.deleteMovie(id);
+      this.props.deleteRating(rating_id);
+      const refreshedMoviesArr = Object.values(this.state.movies).filter(movie => movie.id != movie_id);
       // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
       const refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
       this.setState({movies: refreshedMoviesObj});

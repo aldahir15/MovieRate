@@ -11,6 +11,9 @@ class Api::SessionsController < ApplicationController
       if @user && @user.email_confirmed
         login(@user)
         render "api/users/show"
+      elsif @user && !@user.email_confirmed
+        message = "Please confirm your email by clicking the link sent to " + @user.email + "."
+        render json: [message], status: 401
       else 
         render json: ["Invalid username/password"], status: 401
       end

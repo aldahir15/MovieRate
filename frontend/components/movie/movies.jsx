@@ -34,7 +34,8 @@ class Movies extends React.Component {
   // }
 
   deleteMovie(){
-    this.props.deleteMovie(this.props.movie.id);
+    // this.props.deleteMovie(this.props.movie.id);
+    this.props.deleteRating(this.props.movie.rating.id);
     this.props.history.push('/');
   }
 
@@ -77,7 +78,6 @@ class Movies extends React.Component {
       imdb_id: this.state.fetchedMovieIMDBID,
       user_id: userId
     };
-
 
     this.props.createMovie(movie).then(movie => location.reload(true));
   }

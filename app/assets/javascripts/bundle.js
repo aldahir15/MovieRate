@@ -19470,6 +19470,8 @@ var _movies2 = _interopRequireDefault(_movies);
 
 var _movie_actions = __webpack_require__(23);
 
+var _rating_actions = __webpack_require__(37);
+
 var _reactRouterDom = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -19495,6 +19497,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteMovie: function deleteMovie(id) {
       return dispatch((0, _movie_actions.deleteMovie)(id));
+    },
+    deleteRating: function deleteRating(id) {
+      return dispatch((0, _rating_actions.deleteRating)(id));
     },
     fetchOMDBMovie: function fetchOMDBMovie(title, year) {
       return dispatch((0, _movie_actions.fetchOMDBMovie)(title, year));
@@ -19739,7 +19744,7 @@ module.exports = g;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.receiveRating = exports.updateRating = exports.createRating = exports.RECEIVE_RATING = undefined;
+exports.receiveRating = exports.deleteRating = exports.updateRating = exports.createRating = exports.RECEIVE_RATING = undefined;
 
 var _ratings_api_util = __webpack_require__(81);
 
@@ -19761,6 +19766,14 @@ var updateRating = exports.updateRating = function updateRating(id, rating) {
   return function (dispatch) {
     return RatingAPIUtil.updateRating(id, rating).then(function (rating) {
       return dispatch(receiveRating(rating));
+    });
+  };
+};
+
+var deleteRating = exports.deleteRating = function deleteRating(rating) {
+  return function (dispatch) {
+    return RatingAPIUtil.deleteRating(rating).then(function () {
+      return dispatch(receiveRating({}));
     });
   };
 };
@@ -21483,14 +21496,30 @@ var SessionForm = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (SessionForm.__proto__ || Object.getPrototypeOf(SessionForm)).call(this, props));
 
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleAnchorClick = _this.handleAnchorClick.bind(_this);
 
     _this.state = { username: _this.props.user.username,
       password: _this.props.user.password,
-      email: _this.props.user.email };
+      email: _this.props.user.email,
+      signedUp: false,
+      text: _this.props.text,
+      errors: [] };
     return _this;
   }
 
   _createClass(SessionForm, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(props) {
+      if (this.props.errors.length != this.state.errors.length) {
+        this.setState(_defineProperty({}, "errors", this.props.errors));
+      }
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.setState(_defineProperty({}, "errors", []));
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.loggedIn) {
@@ -21507,10 +21536,28 @@ var SessionForm = function (_React$Component) {
       };
     }
   }, {
+    key: 'handleAnchorClick',
+    value: function handleAnchorClick() {
+      if (this.state.text === "Log In") {
+        this.setState(_defineProperty({}, "text", "Sign Up"));
+      } else {
+        this.setState(_defineProperty({}, "text", "Log In"));
+      }
+    }
+  }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.action(this.state);
+      var sendingState = {
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email
+      };
+      this.props.action(sendingState);
+      if (this.state.text === "Sign Up") {
+        this.setState(_defineProperty({}, "signedUp", true));
+        console.log(this.state);
+      }
     }
   }, {
     key: 'showErrors',
@@ -21530,7 +21577,7 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'showMainContent',
     value: function showMainContent() {
-      if (this.props.text === "Log In") {
+      if (this.state.text === "Log In") {
         return _react2.default.createElement(
           'div',
           { className: 'session-form-inner-div' },
@@ -21555,6 +21602,27 @@ var SessionForm = function (_React$Component) {
               placeholder: 'Password', className: 'session-inputs', value: this.state.password }),
             _react2.default.createElement('div', { className: 'height-divider' }),
             _react2.default.createElement('input', { type: 'submit', value: 'Submit', className: 'submit-session' })
+          )
+        );
+      } else if (this.state.signedUp) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'session-form-inner-div' },
+          _react2.default.createElement(
+            'div',
+            { className: 'signed-up-message' },
+            _react2.default.createElement(
+              'div',
+              null,
+              'Thank you for signing up, '
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'you should recieve an email to ',
+              this.state.email,
+              ' shortly'
+            )
           )
         );
       } else {
@@ -21597,7 +21665,7 @@ var SessionForm = function (_React$Component) {
   }, {
     key: 'showFooter',
     value: function showFooter() {
-      if (this.props.text === "Log In") {
+      if (this.state.text === "Log In") {
         return _react2.default.createElement(
           'div',
           { className: 'session-footer' },
@@ -21610,7 +21678,7 @@ var SessionForm = function (_React$Component) {
               'To create an account, ',
               _react2.default.createElement(
                 'a',
-                { href: '', target: '_blank' },
+                { onClick: this.handleAnchorClick },
                 'click here'
               )
             )
@@ -21629,7 +21697,7 @@ var SessionForm = function (_React$Component) {
               'To Log In, ',
               _react2.default.createElement(
                 'a',
-                { href: '', target: '_blank' },
+                { onClick: this.handleAnchorClick },
                 'click here'
               )
             )
@@ -21642,14 +21710,14 @@ var SessionForm = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'session-form-div' },
+        { className: 'session-form-div', id: this.state.text === "Sign Up" ? "sign-up" : "" },
         _react2.default.createElement(
           'div',
           { className: 'session-form-inner-div' },
           _react2.default.createElement(
             'h1',
             null,
-            this.props.text
+            this.state.text
           )
         ),
         this.showMainContent(),
@@ -40702,6 +40770,13 @@ var updateRating = exports.updateRating = function updateRating(id, rating) {
   });
 };
 
+var deleteRating = exports.deleteRating = function deleteRating(id) {
+  return $.ajax({
+    method: 'DELETE',
+    url: '/api/ratings/' + id
+  });
+};
+
 /***/ }),
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -44489,7 +44564,8 @@ var Movies = function (_React$Component) {
   }, {
     key: "deleteMovie",
     value: function deleteMovie() {
-      this.props.deleteMovie(this.props.movie.id);
+      // this.props.deleteMovie(this.props.movie.id);
+      this.props.deleteRating(this.props.movie.rating.id);
       this.props.history.push('/');
     }
   }, {
@@ -44708,6 +44784,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     deleteMovie: function deleteMovie(id) {
       return dispatch((0, _movie_actions.deleteMovie)(id));
     },
+    deleteRating: function deleteRating(id) {
+      return dispatch((0, _rating_actions.deleteRating)(id));
+    },
     fetchOMDBMovie: function fetchOMDBMovie(title, year) {
       return dispatch((0, _movie_actions.fetchOMDBMovie)(title, year));
     },
@@ -44866,7 +44945,7 @@ var Home = function (_React$Component) {
     key: 'handleClickImg',
     value: function handleClickImg(e) {
       var key = e.target.parentElement.parentElement.id;
-      if (key && this.state.movies[key].rating) {
+      if (key && this.state.movies[key].rating.id) {
         this.handleUpdateRate(e);
       } else {
         this.handleCreateRate(e);
@@ -44950,12 +45029,16 @@ var Home = function (_React$Component) {
   }, {
     key: 'deleteMovie',
     value: function deleteMovie(e) {
-      var id = e.target.id;
+      var movie_id = e.target.id;
+      var rating_id = Object.values(this.state.movies).find(function (movie) {
+        return movie.id == movie_id;
+      }).rating.id;
       var answer = window.confirm("Delete Movie?");
       if (answer) {
-        var movie = this.props.deleteMovie(id);
+        // const movie = this.props.deleteMovie(id);
+        this.props.deleteRating(rating_id);
         var refreshedMoviesArr = Object.values(this.state.movies).filter(function (movie) {
-          return movie.id != id;
+          return movie.id != movie_id;
         });
         // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
         var refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);

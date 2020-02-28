@@ -35,6 +35,8 @@ class Api::RatingsController < ApplicationController
   end
 
   def destroy
+    @rating = Rating.find(params[:id])
+    @rating.delete
   end
 
   def rating_parms

@@ -7,10 +7,24 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAnchorClick = this.handleAnchorClick.bind(this);
 
     this.state = {username: this.props.user.username,
                   password: this.props.user.password,
-                  email: this.props.user.email};
+                  email: this.props.user.email,
+                  signedUp: false,
+                  text: this.props.text,
+                  errors: []};
+  }
+
+  componentDidUpdate(props) {
+    if (this.props.errors.length != this.state.errors.length) {
+      this.setState({["errors"]: this.props.errors});
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({ ["errors"]: [] });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,9 +39,26 @@ class SessionForm extends React.Component {
     };
   }
 
+  handleAnchorClick() {
+    if (this.state.text === "Log In") {
+      this.setState({ ["text"]: "Sign Up" });
+    } else {
+      this.setState({ ["text"]: "Log In" });
+    }
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.action(this.state);
+    let sendingState = {
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email
+    };
+    this.props.action(sendingState);
+    if (this.state.text === "Sign Up") {
+      this.setState({ ["signedUp"]: true });
+      console.log(this.state);
+    }
   }
 
   showErrors() {
@@ -43,7 +74,7 @@ class SessionForm extends React.Component {
   }
 
   showMainContent() {
-    if (this.props.text === "Log In") {
+    if (this.state.text === "Log In") {
       return (
         <div className="session-form-inner-div">
           <form onSubmit={this.handleSubmit} className="session-form">
@@ -58,6 +89,15 @@ class SessionForm extends React.Component {
             <div className="height-divider"></div>
             <input type="submit" value="Submit" className="submit-session" />
           </form>
+        </div>
+      )
+    } else if (this.state.signedUp) {
+      return (
+        <div className="session-form-inner-div">
+          <div className="signed-up-message">
+            <div>Thank you for signing up, </div>
+            <div>you should recieve an email to {this.state.email} shortly</div>
+          </div>
         </div>
       )
     } else {
@@ -80,16 +120,16 @@ class SessionForm extends React.Component {
             <input type="submit" value="Submit" className="submit-session" />
           </form>
         </div>
-      )
+      )      
     }
   }
 
   showFooter() {
-    if (this.props.text === "Log In") {
+    if (this.state.text === "Log In") {
       return (
         <div className="session-footer">
           <div className="session-footer-message">
-            <p>To create an account, <a href="" target="_blank">click here</a></p>
+            <p>To create an account, <a onClick={this.handleAnchorClick}>click here</a></p>
             </div>
         </div>
       );
@@ -97,7 +137,7 @@ class SessionForm extends React.Component {
       return (
         <div className="session-footer">
           <div className="session-footer-message">
-            <p>To Log In, <a href="" target="_blank">click here</a></p>
+            <p>To Log In, <a onClick={this.handleAnchorClick}>click here</a></p>
             </div>
         </div>
       );     
@@ -107,9 +147,9 @@ class SessionForm extends React.Component {
 
   render(){
       return (
-        <div className="session-form-div">
+        <div className="session-form-div" id={this.state.text === "Sign Up" ? "sign-up" : ""}>
         <div className="session-form-inner-div">
-         <h1>{this.props.text}</h1>
+         <h1>{this.state.text}</h1>
         </div>
         {this.showMainContent()}
         {this.showFooter()}

@@ -17,9 +17,14 @@ class Api::MoviesController < ApplicationController
     if @movie.save
       @rating = Rating.new(movie_id: @movie.id, user_id: rating_params[:user_id])
       @rating.save
-    elsif Movie.find_by(imdb_id: movie_params[:imdb_id])
+    elsif Movie.find_by(imdb_id: movie_params[:imdb_id]) || Movie.find_by(description: movie_params[:description])
+      if (Movie.find_by(description: movie_params[:description]))
+        @movie = Movie.find_by(description: movie_params[:description])
+        @movie.update(imdb_id: movie_params[:imdb_id])
+      else 
+        @movie = Movie.find_by(imdb_id: movie_params[:imdb_id]);
+      end 
       @user = User.find(rating_params[:user_id])
-      @movie = Movie.find_by(imdb_id: movie_params[:imdb_id]);
       print("WHAT THE HECK IS GOING ON")
       print(@user.id)
       flag = true
@@ -27,7 +32,7 @@ class Api::MoviesController < ApplicationController
         if rating.movie == @movie
           print("\nfound it!!!!!!\n")
           flag = false
-        end 
+        end
       end 
       if flag
         @rating = Rating.new(movie_id: @movie.id, user_id: rating_params[:user_id]) 

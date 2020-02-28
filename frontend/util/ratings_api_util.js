@@ -14,3 +14,10 @@ export const updateRating = (id, rating) => {
     data: {rating}
   });
 };
+
+export const deleteRating = (id) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/ratings/${id}`
+  });
+};
