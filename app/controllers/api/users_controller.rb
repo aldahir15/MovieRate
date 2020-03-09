@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save && !user_params[:email_confirmed]
-            UserMailer.registration_confirmation(@user).deliver
+            Api::UserMailer.registration_confirmation(@user).deliver
             # redirect_to root_url
             # login(@user)
             # render "api/users/show"
