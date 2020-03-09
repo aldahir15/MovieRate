@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import { GoogleLogin } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
+
 
 
 class SessionForm extends React.Component {
@@ -8,6 +11,7 @@ class SessionForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAnchorClick = this.handleAnchorClick.bind(this);
+    this.responseGoogle = this.responseGoogle.bind(this);
 
     this.state = {username: this.props.user.username,
                   password: this.props.user.password,
@@ -61,6 +65,36 @@ class SessionForm extends React.Component {
     }
   }
 
+  responseGoogle(response) {
+    console.log("THIS IS ULTRA INSTINCT");
+    console.log(response);
+
+    if (response.profileObj && response.profileObj.email) {
+      let sendingState = {};
+      if (this.state.text === "Sign Up") {
+        sendingState = {
+          username: response.profileObj.givenName + Math.round(10000 * Math.random()),
+          password: response.tokenId,
+          email: response.profileObj.email,
+          email_confirmed: true
+        };
+      } else {
+        sendingState = {
+          email: response.profileObj.email,
+          email_confirmed: true,
+          from_google: true
+        };
+      }
+      this.props.action(sendingState);
+      if (this.state.text === "Sign Up") {
+        this.setState({ ["signedUp"]: true });
+        console.log(this.state);
+      }
+    } else {
+      console.log("FALSE");
+    }
+  }
+
   showErrors() {
     return(
       <ul className="errors-messages">
@@ -79,6 +113,14 @@ class SessionForm extends React.Component {
         <div className="session-form-inner-div">
           <form onSubmit={this.handleSubmit} className="session-form">
             {this.showErrors()}
+            <GoogleLogin
+              clientId="906176886161-ovnaadougov32ak5klveg3i21rvfum87.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={this.responseGoogle}
+              onFailure={this.responseGoogle}
+              cookiePolicy={'single_host_origin'}
+              className="google-button"
+            />
             <label className="session-label">Username</label>
             <input type="text" onChange={this.update("username")}
               placeholder="Username" className="session-inputs" value={this.state.username} />
@@ -105,6 +147,14 @@ class SessionForm extends React.Component {
         <div className="session-form-inner-div">
           <form onSubmit={this.handleSubmit} className="session-form">
             {this.showErrors()}
+            <GoogleLogin
+              clientId="906176886161-ovnaadougov32ak5klveg3i21rvfum87.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={this.responseGoogle}
+              onFailure={this.responseGoogle}
+              cookiePolicy={'single_host_origin'}
+              className="google-button"
+            />
             <label className="session-label">Email</label>
             <input type="text" onChange={this.update("email")}
               placeholder="Email" className="session-inputs" value={this.state.email} />

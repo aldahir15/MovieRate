@@ -5,7 +5,11 @@ class Api::MoviesController < ApplicationController
   end 
 
   def show
-    @movie = Movie.find(params[:id])
+    if (params[:id] == "imdb")
+      @movie = Movie.find_by(imdb_id: params[:imdb_id])
+    else
+      @movie = Movie.find(params[:id])
+    end
   end
 
   def new
@@ -18,9 +22,10 @@ class Api::MoviesController < ApplicationController
       @rating = Rating.new(movie_id: @movie.id, user_id: rating_params[:user_id])
       @rating.save
     elsif Movie.find_by(imdb_id: movie_params[:imdb_id]) || Movie.find_by(description: movie_params[:description])
+      @movie = nil
       if (Movie.find_by(description: movie_params[:description]))
         @movie = Movie.find_by(description: movie_params[:description])
-        @movie.update(imdb_id: movie_params[:imdb_id])
+        @movie.update(movie_params);
       else 
         @movie = Movie.find_by(imdb_id: movie_params[:imdb_id]);
       end 
@@ -64,7 +69,7 @@ class Api::MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :img, :year, :genre, :imdb_rating, :imdb_id)
+    params.require(:movie).permit(:title, :description, :img, :year, :genre, :imdb_rating, :imdb_id, :released, :rated, :runtime, :imdb_rating, :rotten_tomatoes_rating)
   end
 
   def rating_params

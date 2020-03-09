@@ -1,6 +1,11 @@
 class Api::SessionsController < ApplicationController
     def create
-      @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+      @user = nil
+      if params[:user][:from_google] 
+        @user = User.find_by(email: params[:user][:email])
+      else 
+        @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+      end 
       # if @user
       #   login(@user)
       #   render "api/users/show"

@@ -1,11 +1,14 @@
 class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
-        if @user.save
+        if @user.save && !user_params[:email_confirmed]
             UserMailer.registration_confirmation(@user).deliver
             # redirect_to root_url
             # login(@user)
             # render "api/users/show"
+        elsif @user.save && user_params[:email_confirmed]
+            login(@user)
+            render "api/users/show"
         else
             @user.errors.full_messages
             render json: @user.errors.full_messages, status: 422
@@ -57,6 +60,6 @@ class Api::UsersController < ApplicationController
 
         private
     def user_params
-        params.require(:user).permit(:username, :password, :email)
+        params.require(:user).permit(:username, :password, :email, :email_confirmed)
     end
 end

@@ -594,3 +594,7 @@ body {
   transition: .5s ease;
 
 }
+
+.google-button {
+  margin-bottom: 15px;
+}

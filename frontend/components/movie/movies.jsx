@@ -16,7 +16,11 @@ class Movies extends React.Component {
       fetchedMovieRatingIMDB: "",
       fetchedMovieRatingRottenTomatoes: "",
       fetchedMovieImg: "",
-      fetchedMovieDescription: ""
+      fetchedMovieDescription: "",
+      fetchedMovieIMDBID: "",
+      fetchedReleased: "",
+      fetchedRated: "",
+      fetchedRuntime: ""
     }
   }
 
@@ -61,13 +65,17 @@ class Movies extends React.Component {
         fetchedMovieRatingRottenTomatoes: e.movies.Ratings[1] ? e.movies.Ratings[1].Value : "",
         fetchedMovieImg: e.movies.Poster,
         fetchedMovieDescription: e.movies.Plot,
-        fetchedMovieIMDBID: e.movies.imdbID
+        fetchedMovieIMDBID: e.movies.imdbID,
+        fetchedReleased: e.movies.Released,
+        fetchedRated: e.movies.Rated,
+        fetchedRuntime: e.movies.Runtime,
       }));
     }
   }
 
   saveOMDBMovie(e) {
     e.preventDefault();
+    console.log(this.state.fetchedMovieRatingIMDB, "IMDB RATING")
     const userId = this.props.user.currentUser.id;
     const movie = {
       title: this.state.fetchedMovieTitle,
@@ -76,6 +84,11 @@ class Movies extends React.Component {
       year: this.state.fetchedMovieYear,
       genre: this.state.fetchedMovieGenre,
       imdb_id: this.state.fetchedMovieIMDBID,
+      released: this.state.fetchedReleased,
+      rated: this.state.fetchedRated,
+      runtime: this.state.fetchedRuntime,
+      imdb_rating: this.state.fetchedMovieRatingIMDB,
+      rotten_tomatoes_rating: this.state.fetchedMovieRatingRottenTomatoes,
       user_id: userId
     };
 

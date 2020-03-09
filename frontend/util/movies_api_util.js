@@ -11,6 +11,7 @@ export const fetchUserMovies = (id) => {
     url: `/api/users/${id}/movies/`
   });
 };
+
 export const fetchMovie = (id) => {
   return $.ajax({
     method: 'GET',
