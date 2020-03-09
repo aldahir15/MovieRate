@@ -61,13 +61,10 @@ class SessionForm extends React.Component {
     this.props.action(sendingState);
     if (this.state.text === "Sign Up") {
       this.setState({ ["signedUp"]: true });
-      console.log(this.state);
     }
   }
 
   responseGoogle(response) {
-    console.log("THIS IS ULTRA INSTINCT");
-    console.log(response);
 
     if (response.profileObj && response.profileObj.email) {
       let sendingState = {};
@@ -88,7 +85,6 @@ class SessionForm extends React.Component {
       this.props.action(sendingState);
       if (this.state.text === "Sign Up") {
         this.setState({ ["signedUp"]: true });
-        console.log(this.state);
       }
     } else {
       console.log("FALSE");

@@ -21834,14 +21834,11 @@ var SessionForm = function (_React$Component) {
       this.props.action(sendingState);
       if (this.state.text === "Sign Up") {
         this.setState(_defineProperty({}, "signedUp", true));
-        console.log(this.state);
       }
     }
   }, {
     key: 'responseGoogle',
     value: function responseGoogle(response) {
-      console.log("THIS IS ULTRA INSTINCT");
-      console.log(response);
 
       if (response.profileObj && response.profileObj.email) {
         var sendingState = {};
@@ -21862,7 +21859,6 @@ var SessionForm = function (_React$Component) {
         this.props.action(sendingState);
         if (this.state.text === "Sign Up") {
           this.setState(_defineProperty({}, "signedUp", true));
-          console.log(this.state);
         }
       } else {
         console.log("FALSE");
