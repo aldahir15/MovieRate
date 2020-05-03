@@ -50333,6 +50333,10 @@ var _movie_container = __webpack_require__(26);
 
 var _movie_container2 = _interopRequireDefault(_movie_container);
 
+var _home_movie_container = __webpack_require__(138);
+
+var _home_movie_container2 = _interopRequireDefault(_home_movie_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50349,29 +50353,13 @@ var Home = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
-    _this.handleEnterImg = _this.handleEnterImg.bind(_this);
-    _this.handleLeaveImg = _this.handleLeaveImg.bind(_this);
-    _this.handleClickImg = _this.handleClickImg.bind(_this);
-    _this.handleCreateRate = _this.handleCreateRate.bind(_this);
-    _this.handleUpdateRate = _this.handleUpdateRate.bind(_this);
-    _this.handleEnterPoster = _this.handleEnterPoster.bind(_this);
-    _this.handleLeavePoster = _this.handleLeavePoster.bind(_this);
     _this.filter = _this.filter.bind(_this);
-    _this.deleteMovie = _this.deleteMovie.bind(_this);
     _this.movieListToObj = _this.movieListToObj.bind(_this);
 
     _this.masterMovieList;
 
     _this.state = {
       movies: {},
-      moods: {
-        happy: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one.png",
-        meh: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero.png",
-        sad: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative.png",
-        happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one-select.png",
-        mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero-selected.png",
-        sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative-selected.png"
-      },
       filters: {
         name: true,
         rating: false,
@@ -50417,139 +50405,6 @@ var Home = function (_React$Component) {
       });
     }
   }, {
-    key: 'handleEnterImg',
-    value: function handleEnterImg(e) {
-      if (e.target.id === "good") {
-        e.target.src = this.state.moods.happyActive;
-      } else if (e.target.id === "meh") {
-        e.target.src = this.state.moods.mehActive;
-      } else if (e.target.id === "bad") {
-        e.target.src = this.state.moods.sadActive;
-      }
-    }
-  }, {
-    key: 'handleLeaveImg',
-    value: function handleLeaveImg(e) {
-      var key = e.target.parentElement.parentElement.id;
-      if (key && this.state.movies[key].rating && this.state.movies[key].rating.rate === 1 && e.target.id === "good") {
-        e.target.src = this.state.moods.happyActive;
-      } else if (key && this.state.movies[key].rating && this.state.movies[key].rating.rate === 0 && e.target.id === "meh") {
-        e.target.src = this.state.moods.mehActive;
-      } else if (key && this.state.movies[key].rating && this.state.movies[key].rating.rate === -1 && e.target.id === "bad") {
-        e.target.src = this.state.moods.sadActive;
-      } else if (e.target.id === "good") {
-        e.target.src = this.state.moods.happy;
-      } else if (e.target.id === "meh") {
-        e.target.src = this.state.moods.meh;
-      } else if (e.target.id === "bad") {
-        e.target.src = this.state.moods.sad;
-      }
-    }
-  }, {
-    key: 'handleClickImg',
-    value: function handleClickImg(e) {
-      var key = e.target.parentElement.parentElement.id;
-      if (key && this.state.movies[key].rating.id) {
-        this.handleUpdateRate(e);
-      } else {
-        this.handleCreateRate(e);
-      }
-    }
-  }, {
-    key: 'handleCreateRate',
-    value: function handleCreateRate(e) {
-      var _this3 = this;
-
-      var movieKey = e.target.parentElement.parentElement.id;
-      var movieId = this.state.movies[movieKey].id;
-      var rate = void 0;
-      if (e.target.id === "good") {
-        rate = 1;
-      } else if (e.target.id === "meh") {
-        rate = 0;
-      } else if (e.target.id === "bad") {
-        rate = -1;
-      }
-      // console.log(this.props.createRating);
-      this.props.createRating({
-        rate: rate,
-        movie_id: movieId
-      }).then(function (rating) {
-        // console.log(rating)
-        var oldState = _this3.state;
-        oldState.movies[movieKey].rating = rating.rating;
-        _this3.setState({ movies: oldState.movies });
-      });
-    }
-  }, {
-    key: 'handleUpdateRate',
-    value: function handleUpdateRate(e) {
-      var _this4 = this;
-
-      var movieKey = e.target.parentElement.parentElement.id;
-      var ratingId = this.state.movies[movieKey].rating.id;
-      var rate = void 0;
-      if (e.target.id === "good") {
-        rate = 1;
-      } else if (e.target.id === "meh") {
-        rate = 0;
-      } else if (e.target.id === "bad") {
-        rate = -1;
-      }
-      this.props.updateRating(ratingId, { rate: rate }).then(function (rating) {
-        var oldState = _this4.state;
-        oldState.movies[movieKey].rating.rate = rate;
-        _this4.setState({ movies: oldState.movies });
-      });
-    }
-  }, {
-    key: 'handleEnterPoster',
-    value: function handleEnterPoster(e) {
-      var poster = void 0;
-      if (e.target.classList[0] === "overlay") {
-        poster = e.target.previousSibling;
-      } else if (e.target.classList[0] === "overlay-text") {
-        poster = e.target.parentElement.previousSibling;
-      } else {
-        poster = e.target;
-      }
-
-      poster.classList.add('movie-poster-hover');
-    }
-  }, {
-    key: 'handleLeavePoster',
-    value: function handleLeavePoster(e) {
-      var poster = void 0;
-      if (e.target.classList[0] === "overlay") {
-        poster = e.target.previousSibling;
-      } else if (e.target.classList[0] === "overlay-text") {
-        poster = e.target.parentElement.previousSibling;
-      } else {
-        poster = e.target;
-      }
-
-      poster.classList.remove('movie-poster-hover');
-    }
-  }, {
-    key: 'deleteMovie',
-    value: function deleteMovie(e) {
-      var movie_id = e.target.id;
-      var rating_id = Object.values(this.state.movies).find(function (movie) {
-        return movie.id == movie_id;
-      }).rating.id;
-      var answer = window.confirm("Delete Movie?");
-      if (answer) {
-        // const movie = this.props.deleteMovie(id);
-        this.props.deleteRating(rating_id);
-        var refreshedMoviesArr = Object.values(this.state.movies).filter(function (movie) {
-          return movie.id != movie_id;
-        });
-        // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
-        var refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
-        this.setState({ movies: refreshedMoviesObj });
-      }
-    }
-  }, {
     key: 'filter',
     value: function filter(e) {
       var target = e.target.tagName === "H4" ? e.target.parentElement : e.target;
@@ -50585,7 +50440,7 @@ var Home = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this3 = this;
 
       return _react2.default.createElement(
         'div',
@@ -50615,52 +50470,7 @@ var Home = function (_React$Component) {
           'ul',
           { id: 'main-container-ul' },
           Object.keys(this.state.movies).map(function (key) {
-            return _react2.default.createElement(
-              'div',
-              { className: 'movie-block', id: _this5.state.movies[key].id, key: key },
-              _react2.default.createElement(
-                'div',
-                { className: 'img-block' },
-                _react2.default.createElement('img', { src: _this5.state.movies[key].img, className: 'movie-poster-img', onMouseEnter: _this5.handleEnterPoster, onMouseLeave: _this5.handleLeavePoster }),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'overlay', onMouseEnter: _this5.handleEnterPoster, onMouseLeave: _this5.handleLeavePoster },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'delete-container' },
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'delete-button', id: _this5.state.movies[key].id, onClick: _this5.deleteMovie },
-                      'Delete'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'p',
-                    { className: 'overlay-text' },
-                    _this5.state.movies[key].description
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement('img', { onMouseEnter: _this5.handleEnterImg, onMouseLeave: _this5.handleLeaveImg, onClick: _this5.handleClickImg,
-                  src: _this5.state.movies[key].rating && _this5.state.movies[key].rating.rate === 1 ? _this5.state.moods.happyActive : _this5.state.moods.happy, className: 'rating-img', id: 'good' }),
-                _react2.default.createElement('img', { onMouseEnter: _this5.handleEnterImg, onMouseLeave: _this5.handleLeaveImg, onClick: _this5.handleClickImg,
-                  src: _this5.state.movies[key].rating && _this5.state.movies[key].rating.rate === 0 ? _this5.state.moods.mehActive : _this5.state.moods.meh, className: 'rating-img', id: 'meh' }),
-                _react2.default.createElement('img', { onMouseEnter: _this5.handleEnterImg, onMouseLeave: _this5.handleLeaveImg, onClick: _this5.handleClickImg,
-                  src: _this5.state.movies[key].rating && _this5.state.movies[key].rating.rate === -1 ? _this5.state.moods.sadActive : _this5.state.moods.sad, className: 'rating-img', id: 'bad' }),
-                _react2.default.createElement(
-                  'h2',
-                  null,
-                  _this5.state.movies[key].title,
-                  ' (',
-                  _this5.state.movies[key].year,
-                  ')'
-                ),
-                _this5.state.movies[key].genre
-              )
-            );
+            return _react2.default.createElement(_home_movie_container2.default, { movie: _this3.state.movies[key], key: key });
           })
         )
       );
@@ -50672,11 +50482,29 @@ var Home = function (_React$Component) {
 
 exports.default = Home;
 
-
-{/* <div className="HomeHeader">
-   <h1>Movie Ratings</h1>
-   <HomeModal action={MovieContainer} />
-  </div> */}
+// {Object.keys(this.state.movies).map(key =>
+//     <div className="movie-block" id={this.state.movies[key].id} key={key}>
+//       <div className="img-block">
+//         <img src={this.state.movies[key].img} className="movie-poster-img" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}></img>
+//         <div className="overlay" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}>
+//           <div className="delete-container">
+//             <div className="delete-button" id={this.state.movies[key].id} onClick={this.deleteMovie}>Delete</div>
+//           </div>
+//           <p className="overlay-text">{this.state.movies[key].description}</p>
+//         </div>
+//       </div>
+//       <p>
+//         <img onMouseEnter={this.handleEnterImg} onMouseLeave={this.handleLeaveImg} onClick={this.handleClickImg}
+//           src={this.state.movies[key].rating && this.state.movies[key].rating.rate === 1 ? this.state.moods.happyActive : this.state.moods.happy} className="rating-img" id="good"></img>
+//         <img onMouseEnter={this.handleEnterImg} onMouseLeave={this.handleLeaveImg} onClick={this.handleClickImg}
+//           src={this.state.movies[key].rating && this.state.movies[key].rating.rate === 0 ? this.state.moods.mehActive : this.state.moods.meh} className="rating-img" id="meh"></img>
+//         <img onMouseEnter={this.handleEnterImg} onMouseLeave={this.handleLeaveImg} onClick={this.handleClickImg}
+//           src={this.state.movies[key].rating && this.state.movies[key].rating.rate === -1 ? this.state.moods.sadActive : this.state.moods.sad} className="rating-img" id="bad"></img>
+//         <h2>{this.state.movies[key].title} ({this.state.movies[key].year})</h2>
+//         {this.state.movies[key].genre}
+//       </p>
+//     </div>)
+// }
 
 /***/ }),
 /* 125 */
@@ -51961,6 +51789,308 @@ exports.default = Greeting;
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(e,t){ true?module.exports=t(__webpack_require__(0),__webpack_require__(2),__webpack_require__(5)):"function"==typeof define&&define.amd?define(["react","prop-types","react-dom"],t):"object"==typeof exports?exports["react-parallax"]=t(require("react"),require("prop-types"),require("react-dom")):e["react-parallax"]=t(e.React,e.PropTypes,e.ReactDOM)}(this,function(e,t,n){return function(e){function t(i){if(n[i])return n[i].exports;var r=n[i]={i:i,l:!1,exports:{}};return e[i].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,i){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:i})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=4)}([function(t,n){t.exports=e},function(e,n){e.exports=t},function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{default:e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function o(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var s=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),l=n(1),u=i(l),c=n(0),d=i(c),g=function(e){function t(){return r(this,t),a(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return o(t,e),s(t,[{key:"render",value:function(){return d.default.createElement("div",{className:"react-parallax-background "+this.props.className},this.props.children)}}],[{key:"isParallaxBackground",value:function(){return!0}}]),t}(d.default.Component);g.propTypes={children:u.default.node,className:u.default.string},g.defaultProps={className:""},t.default=g},function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{default:e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function o(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var s=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),l=n(1),u=i(l),c=n(0),d=i(c),g=n(6),f=i(g),p=n(5),h=function(e){function t(e){r(this,t);var n=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));return n.onWindowResize=function(){n.parentHeight=(0,p.getNodeHeight)(n.canUseDOM,n.parent),n.updatePosition()},n.onWindowLoad=function(){n.updatePosition()},n.onScroll=function(e){if(n.canUseDOM){var t=Date.now();t-n.timestamp>=10&&(0,p.isScrolledIntoView)(n.node,100,n.canUseDOM)&&(window.requestAnimationFrame(n.updatePosition),n.timestamp=t)}},n.updatePosition=function(){var e=!1;if(n.content=n.ReactDOM.findDOMNode(n.refs.content),n.contentHeight=n.content.getBoundingClientRect().height,n.contentWidth=n.node.getBoundingClientRect().width,n.content){n.img&&n.img.naturalWidth/n.img.naturalHeight<n.contentWidth/n.getImageHeight()&&(e=!0);var t=(0,p.getRelativePosition)(n.node,n.canUseDOM,n.parent);n.img&&n.setImagePosition(t,e),n.bg&&n.splitChildren.bgChildren.length>0&&n.setBackgroundPosition(t)}},n.state={bgImage:e.bgImage,bgImageSrcSet:e.bgImageSrcSet,bgImageSizes:e.bgImageSizes,childStyle:{position:"relative"}},n.canUseDOM=(0,p.canUseDOM)(),n.ReactDOM=f.default.findDOMNode?f.default:d.default,n.node=null,n.content=null,n.splitChildren=(0,p.getSplitChildren)(e),n.bgImageLoaded=!1,n.bgImageRef=void 0,n.parent=e.parent,n.parentHeight=(0,p.getNodeHeight)(n.canUseDOM,n.parent),n.timestamp=Date.now(),n.dynamicBlur=!(!e.blur||void 0===e.blur.min||void 0===e.blur.max),n}return o(t,e),s(t,[{key:"componentDidMount",value:function(){var e=this.props.parent,t=this.state,n=t.bgImage,i=t.bgImageSrcSet,r=t.bgImageSizes;this.parent=e||document,this.addListeners(this.props),this.node=this.ReactDOM.findDOMNode(this),n?this.loadImage(n,i,r):this.updatePosition(),this.setParallaxStyle(),this.setInitialBackgroundStyles(this.img),this.setInitialBackgroundStyles(this.bg)}},{key:"componentWillReceiveProps",value:function(e){var t=e.parent,n=e.bgImage,i=e.bgImageSrcSet,r=e.bgImageSizes;this.splitChildren=(0,p.getSplitChildren)(e),t&&this.parent!==t&&(this.parent=t,this.removeListeners(),this.addListeners()),this.parentHeight=(0,p.getNodeHeight)(this.canUseDOM,this.parent),this.state.bgImage!==n&&this.loadImage(n,i,r)}},{key:"shouldComponentUpdate",value:function(e,t){return e.bgImage===this.props.bgImage||t.bgImage!==this.state.bgImage}},{key:"componentWillUnmount",value:function(){this.removeListeners(this.parent),this.releaseImage()}},{key:"setParallaxStyle",value:function(){this.node&&(this.node.style.position="relative",this.node.style.overflow="hidden")}},{key:"setInitialBackgroundStyles",value:function(e){var t=this;e&&(e.style.position="absolute",e.style.left="50%",e.style.WebkitTransform="translate3d(-50%, 0, 0)",e.style.transform="translate3d(-50%, 0, 0)",e.style.WebkitTransformStyle="preserve-3d",e.style.WebkitBackfaceVisibility="hidden",e.style.MozBackfaceVisibility="hidden",e.style.MsBackfaceVisibility="hidden",this.props.bgStyle&&Object.keys(this.props.bgStyle).forEach(function(n){e.style[n]=t.props.bgStyle[n]}))}},{key:"setBackgroundPosition",value:function(e){var t=this.props,n=t.disabled,i=t.strength;if(!0!==n){var r=i<0,a=(r?i:0)-i*e;this.bg.style.WebkitTransform="translate3d(-50%, "+a+"px, 0)",this.bg.style.transform="translate3d(-50%, "+a+"px, 0)"}}},{key:"setImagePosition",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=this.props,i=n.bgHeight,r=n.bgWidth,a=n.disabled,o=n.strength,s=n.blur,l=i||(t?"auto":this.getImageHeight()+"px"),u=r||(t?this.contentWidth+"px":"auto");if(this.img.style.height=l,this.img.style.width=u,!0!==a){var c=o<0,d=(c?o:0)-o*e;if(this.img.style.WebkitTransform="translate3d(-50%, "+d+"px, 0)",this.img.style.transform="translate3d(-50%, "+d+"px, 0)",s){var g=this.dynamicBlur?s.min+(1-e)*s.max:s;(0,p.setBlur)(this.img,g)}}}},{key:"getImageHeight",value:function(){var e=this.props.strength<0,t=e?2.5:1,n=t*Math.abs(this.props.strength);return Math.floor(this.contentHeight+n)}},{key:"addListeners",value:function(){this.canUseDOM&&this.parent&&(this.parent.addEventListener("scroll",this.onScroll,!1),window.addEventListener("resize",this.onWindowResize,!1),window.addEventListener("load",this.onWindowLoad,!1))}},{key:"removeListeners",value:function(){this.canUseDOM&&this.parent&&(this.parent.removeEventListener("scroll",this.onScroll,!1),window.removeEventListener("resize",this.onWindowResize,!1),window.removeEventListener("load",this.onWindowLoad,!1))}},{key:"loadImage",value:function(e,t,n){var i=this;this.releaseImage(),this.bgImageRef=new Image,this.bgImageRef.onload=function(r){i.setState({bgImage:e,bgImageSrcSet:t,bgImageSizes:n},function(){return i.updatePosition()})},this.bgImageRef.onerror=this.bgImageRef.onload,this.bgImageRef.src=e,this.bgImageRef.srcset=t||"",this.bgImageRef.sizes=n||""}},{key:"releaseImage",value:function(){this.bgImageRef&&(this.bgImageRef.onload=null,this.bgImageRef.onerror=null,delete this.bgImageRef)}},{key:"bgMounted",value:function(e){this.bg=this.ReactDOM.findDOMNode(e)}},{key:"log",value:function(){if(this.props.log){for(var e=arguments.length,t=Array(e),n=0;n<e;n++)t[n]=arguments[n];console.log(t)}}},{key:"render",value:function(){var e=this,t=this.props,n=t.className,i=t.style,r=t.bgClassName,a=t.bgImageAlt,o=this.state,s=o.bgImage,l=o.bgImageSrcSet,u=o.bgImageSizes,c=o.childStyle;return d.default.createElement("div",{className:"react-parallax "+n,style:i},s?d.default.createElement("img",{className:r,src:s,srcSet:l,sizes:u,ref:function(t){return e.img=t},alt:a}):null,this.splitChildren.bgChildren.length>0?d.default.createElement("div",{className:"react-parallax-background-children",ref:function(t){return e.bgMounted(t)}},this.splitChildren.bgChildren):null,d.default.createElement("div",{className:"react-parallax-content",style:c,ref:"content"},this.splitChildren.children))}}]),t}(d.default.Component);h.propTypes={bgClassName:u.default.string,bgHeight:u.default.string,bgImage:u.default.string,bgImageAlt:u.default.string,bgImageSizes:u.default.string,bgImageSrcSet:u.default.string,bgStyle:u.default.object,bgWidth:u.default.string,blur:u.default.oneOfType([u.default.number,u.default.object]),className:u.default.string,disabled:u.default.bool,log:u.default.bool,parent:u.default.any,strength:u.default.number,style:u.default.object},h.defaultProps={bgClassName:"react-parallax-bgimage",bgImageAlt:"",className:"",disabled:!1,log:!1,strength:100},t.default=h},function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0}),t.Background=t.Parallax=void 0;var r=n(3),a=i(r),o=n(2),s=i(o);t.Parallax=a.default,t.Background=s.default},function(e,t,n){"use strict";function i(e){if(!e)return 0;var t=window,n=document,i=n.documentElement,r=n.getElementsByTagName("body")[0];return t.innerHeight||i.clientHeight||r.clientHeight}function r(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0,n=arguments[2];if(!n)return!1;var r=e.getBoundingClientRect().top-t,a=e.getBoundingClientRect().bottom+t;return r<=i(n)&&a>=0}function a(e,t){return e?t?t.clientHeight:i(e):0}function o(){return!("undefined"==typeof window||!window.document||!window.document.createElement)}function s(e,t,n){return(n-e)/(t-e)||0}function l(e,t,n){if(!t)return 0;var i=e,r=Math.round(i.getBoundingClientRect().top),o=a(t);return r=r>o?o:r,s(0,o,r)}function u(e){var t=[],n=g.default.Children.toArray(e.children);return n.forEach(function(e,i){e.type&&e.type.isParallaxBackground&&(t=t.concat(n.splice(i,1)))}),{bgChildren:t,children:n}}function c(e,t){e.style.WebkitFilter="blur("+t+"px)",e.style.filter="blur("+t+"px)"}Object.defineProperty(t,"__esModule",{value:!0}),t.getWindowHeight=i,t.isScrolledIntoView=r,t.getNodeHeight=a,t.canUseDOM=o,t.getPercentage=s,t.getRelativePosition=l,t.getSplitChildren=u,t.setBlur=c;var d=n(0),g=function(e){return e&&e.__esModule?e:{default:e}}(d)},function(e,t){e.exports=n}])});
+
+/***/ }),
+/* 137 */,
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(4);
+
+var _home_movie = __webpack_require__(139);
+
+var _home_movie2 = _interopRequireDefault(_home_movie);
+
+var _movie_actions = __webpack_require__(16);
+
+var _rating_actions = __webpack_require__(17);
+
+var _reactRouterDom = __webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+    return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        fetchMovie: function fetchMovie(id) {
+            return dispatch((0, _movie_actions.fetchMovie)(id));
+        },
+        deleteRating: function deleteRating(id) {
+            return dispatch((0, _rating_actions.deleteRating)(id));
+        },
+        createRating: function createRating(rating) {
+            return dispatch((0, _rating_actions.createRating)(rating));
+        },
+        updateRating: function updateRating(id, rating) {
+            return dispatch((0, _rating_actions.updateRating)(id, rating));
+        }
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_home_movie2.default);
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HomeMovie = function (_React$Component) {
+    _inherits(HomeMovie, _React$Component);
+
+    function HomeMovie(props) {
+        _classCallCheck(this, HomeMovie);
+
+        var _this = _possibleConstructorReturn(this, (HomeMovie.__proto__ || Object.getPrototypeOf(HomeMovie)).call(this, props));
+
+        _this.handleEnterImg = _this.handleEnterImg.bind(_this);
+        _this.handleLeaveImg = _this.handleLeaveImg.bind(_this);
+        _this.handleClickImg = _this.handleClickImg.bind(_this);
+        _this.handleCreateRate = _this.handleCreateRate.bind(_this);
+        _this.handleUpdateRate = _this.handleUpdateRate.bind(_this);
+        _this.handleEnterPoster = _this.handleEnterPoster.bind(_this);
+        _this.handleLeavePoster = _this.handleLeavePoster.bind(_this);
+        _this.deleteMovie = _this.deleteMovie.bind(_this);
+
+        _this.state = {
+            movie: {},
+            key: 0,
+            moods: {
+                happy: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one.png",
+                meh: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero.png",
+                sad: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative.png",
+                happyActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-one-select.png",
+                mehActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-zero-selected.png",
+                sadActive: "https://res.cloudinary.com/dg4mxmige/image/upload/c_scale,w_30/v1549252135/rate-negative-selected.png"
+            }
+        };
+        return _this;
+    }
+
+    _createClass(HomeMovie, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.setState({ movie: this.props.movie, key: this.props.key });
+        }
+    }, {
+        key: "handleEnterImg",
+        value: function handleEnterImg(e) {
+            if (e.target.id === "good") {
+                e.target.src = this.state.moods.happyActive;
+            } else if (e.target.id === "meh") {
+                e.target.src = this.state.moods.mehActive;
+            } else if (e.target.id === "bad") {
+                e.target.src = this.state.moods.sadActive;
+            }
+        }
+    }, {
+        key: "handleLeaveImg",
+        value: function handleLeaveImg(e) {
+            var key = e.target.parentElement.parentElement.id;
+            if (key && this.state.movie.rating && this.state.movie.rating.rate === 1 && e.target.id === "good") {
+                e.target.src = this.state.moods.happyActive;
+            } else if (key && this.state.movie.rating && this.state.movie.rating.rate === 0 && e.target.id === "meh") {
+                e.target.src = this.state.moods.mehActive;
+            } else if (key && this.state.movie.rating && this.state.movie.rating.rate === -1 && e.target.id === "bad") {
+                e.target.src = this.state.moods.sadActive;
+            } else if (e.target.id === "good") {
+                e.target.src = this.state.moods.happy;
+            } else if (e.target.id === "meh") {
+                e.target.src = this.state.moods.meh;
+            } else if (e.target.id === "bad") {
+                e.target.src = this.state.moods.sad;
+            }
+        }
+    }, {
+        key: "handleClickImg",
+        value: function handleClickImg(e) {
+            var key = e.target.parentElement.parentElement.id;
+            if (key && this.state.movie.rating.id) {
+                this.handleUpdateRate(e);
+            } else {
+                this.handleCreateRate(e);
+            }
+        }
+    }, {
+        key: "handleCreateRate",
+        value: function handleCreateRate(e) {
+            var _this2 = this;
+
+            var movieKey = e.target.parentElement.parentElement.id;
+            var movieId = this.state.movie.id;
+            var rate = void 0;
+            if (e.target.id === "good") {
+                rate = 1;
+            } else if (e.target.id === "meh") {
+                rate = 0;
+            } else if (e.target.id === "bad") {
+                rate = -1;
+            }
+            // console.log(this.props.createRating);
+            this.props.createRating({
+                rate: rate,
+                movie_id: movieId
+            }).then(function (rating) {
+                // console.log(rating)
+                var oldState = _this2.state.movie;
+                oldState.rating = rating.rating;
+                _this2.setState({ movie: oldState });
+            });
+        }
+    }, {
+        key: "handleUpdateRate",
+        value: function handleUpdateRate(e) {
+            var _this3 = this;
+
+            var movieKey = e.target.parentElement.parentElement.id;
+            var ratingId = this.state.movie.rating.id;
+            var rate = void 0;
+            if (e.target.id === "good") {
+                rate = 1;
+            } else if (e.target.id === "meh") {
+                rate = 0;
+            } else if (e.target.id === "bad") {
+                rate = -1;
+            }
+            this.props.updateRating(ratingId, { rate: rate }).then(function (rating) {
+                var oldState = _this3.state.movie;
+                oldState.rating.rate = rate;
+                _this3.setState({ movie: oldState });
+            });
+        }
+    }, {
+        key: "handleEnterPoster",
+        value: function handleEnterPoster(e) {
+            var poster = void 0;
+            if (e.target.classList[0] === "overlay") {
+                poster = e.target.previousSibling;
+            } else if (e.target.classList[0] === "overlay-text") {
+                poster = e.target.parentElement.previousSibling;
+            } else {
+                poster = e.target;
+            }
+
+            poster.classList.add('movie-poster-hover');
+        }
+    }, {
+        key: "handleLeavePoster",
+        value: function handleLeavePoster(e) {
+            var poster = void 0;
+            if (e.target.classList[0] === "overlay") {
+                poster = e.target.previousSibling;
+            } else if (e.target.classList[0] === "overlay-text") {
+                poster = e.target.parentElement.previousSibling;
+            } else {
+                poster = e.target;
+            }
+
+            poster.classList.remove('movie-poster-hover');
+        }
+    }, {
+        key: "deleteMovie",
+        value: function deleteMovie(e) {
+            var movie_id = e.target.id;
+            var rating_id = Object.values(this.state.movies).find(function (movie) {
+                return movie.id == movie_id;
+            }).rating.id;
+            var answer = window.confirm("Delete Movie?");
+            if (answer) {
+                // const movie = this.props.deleteMovie(id);
+                this.props.deleteRating(rating_id);
+                var refreshedMoviesArr = Object.values(this.state.movies).filter(function (movie) {
+                    return movie.id != movie_id;
+                });
+                // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
+                var refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
+                this.setState({ movies: refreshedMoviesObj });
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            console.log(this.state);
+            return _react2.default.createElement(
+                "div",
+                { className: "movie-block", id: this.state.movie.id, key: this.state.key },
+                _react2.default.createElement(
+                    "div",
+                    { className: "img-block" },
+                    _react2.default.createElement("img", { src: this.state.movie.img, className: "movie-poster-img", onMouseEnter: this.handleEnterPoster, onMouseLeave: this.handleLeavePoster }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "overlay", onMouseEnter: this.handleEnterPoster, onMouseLeave: this.handleLeavePoster },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "delete-container" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "delete-button", id: this.state.movie.id, onClick: this.deleteMovie },
+                                "Delete"
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "overlay-text" },
+                            this.state.movie.description
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    "p",
+                    null,
+                    _react2.default.createElement("img", { onMouseEnter: this.handleEnterImg, onMouseLeave: this.handleLeaveImg, onClick: this.handleClickImg,
+                        src: this.state.movie.rating && this.state.movie.rating.rate === 1 ? this.state.moods.happyActive : this.state.moods.happy, className: "rating-img", id: "good" }),
+                    _react2.default.createElement("img", { onMouseEnter: this.handleEnterImg, onMouseLeave: this.handleLeaveImg, onClick: this.handleClickImg,
+                        src: this.state.movie.rating && this.state.movie.rating.rate === 0 ? this.state.moods.mehActive : this.state.moods.meh, className: "rating-img", id: "meh" }),
+                    _react2.default.createElement("img", { onMouseEnter: this.handleEnterImg, onMouseLeave: this.handleLeaveImg, onClick: this.handleClickImg,
+                        src: this.state.movie.rating && this.state.movie.rating.rate === -1 ? this.state.moods.sadActive : this.state.moods.sad, className: "rating-img", id: "bad" }),
+                    _react2.default.createElement(
+                        "h2",
+                        null,
+                        this.state.movie.title,
+                        " (",
+                        this.state.movie.year,
+                        ")"
+                    ),
+                    this.state.movie.genre
+                )
+            );
+        }
+    }]);
+
+    return HomeMovie;
+}(_react2.default.Component);
+
+exports.default = HomeMovie;
 
 /***/ })
 /******/ ]);
