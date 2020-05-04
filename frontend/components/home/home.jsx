@@ -1,7 +1,8 @@
 import React from 'react';
 import HomeModal from './home_modal';
 import MovieContainer from '../movie/movie_container';
-import HomeMovie from './home_movie_container.jsx';
+// import HomeMovie from './home_movie_container.jsx';
+import HomeMovieModal from './home_movie_modal.jsx';
 
 
 class Home extends React.Component {
@@ -106,7 +107,7 @@ class Home extends React.Component {
       </div>
       <ul id = "main-container-ul">
         {Object.keys(this.state.movies).map(key => 
-          <HomeMovie movie={this.state.movies[key]} key={key}></HomeMovie>)}
+          <HomeMovieModal movie={this.state.movies[key]} key={key}></HomeMovieModal>)}
       </ul>
     </div>)
   }
@@ -114,26 +115,3 @@ class Home extends React.Component {
 
 export default Home;
 
-// {Object.keys(this.state.movies).map(key =>
-//     <div className="movie-block" id={this.state.movies[key].id} key={key}>
-//       <div className="img-block">
-//         <img src={this.state.movies[key].img} className="movie-poster-img" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}></img>
-//         <div className="overlay" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}>
-//           <div className="delete-container">
-//             <div className="delete-button" id={this.state.movies[key].id} onClick={this.deleteMovie}>Delete</div>
-//           </div>
-//           <p className="overlay-text">{this.state.movies[key].description}</p>
-//         </div>
-//       </div>
-//       <p>
-//         <img onMouseEnter={this.handleEnterImg} onMouseLeave={this.handleLeaveImg} onClick={this.handleClickImg}
-//           src={this.state.movies[key].rating && this.state.movies[key].rating.rate === 1 ? this.state.moods.happyActive : this.state.moods.happy} className="rating-img" id="good"></img>
-//         <img onMouseEnter={this.handleEnterImg} onMouseLeave={this.handleLeaveImg} onClick={this.handleClickImg}
-//           src={this.state.movies[key].rating && this.state.movies[key].rating.rate === 0 ? this.state.moods.mehActive : this.state.moods.meh} className="rating-img" id="meh"></img>
-//         <img onMouseEnter={this.handleEnterImg} onMouseLeave={this.handleLeaveImg} onClick={this.handleClickImg}
-//           src={this.state.movies[key].rating && this.state.movies[key].rating.rate === -1 ? this.state.moods.sadActive : this.state.moods.sad} className="rating-img" id="bad"></img>
-//         <h2>{this.state.movies[key].title} ({this.state.movies[key].year})</h2>
-//         {this.state.movies[key].genre}
-//       </p>
-//     </div>)
-// }

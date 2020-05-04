@@ -1,4 +1,5 @@
 import React from 'react';
+// import HomeMovieModal from './home_movie_modal.jsx';
 
 class HomeMovie extends React.Component {
     constructor(props) {
@@ -151,10 +152,10 @@ class HomeMovie extends React.Component {
     }
 
 
+
     render() {
-        console.log(this.state)
         return (
-        <div className="movie-block" id={this.state.movie.id} key={this.state.key}>
+            <div className="movie-block" id={this.state.movie.id} key={this.state.key} onClick={this.props.open}>
             <div className="img-block">
                 <img src={this.state.movie.img} className="movie-poster-img" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}></img>
                 <div className="overlay" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}>

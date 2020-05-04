@@ -9,6 +9,9 @@ module.exports = {
   },
   module: {
     loaders: [
+
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
@@ -20,6 +23,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx", "*"]
+    extensions: [".js", ".jsx", "*",".css"]
   }
 };

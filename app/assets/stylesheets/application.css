@@ -295,6 +295,7 @@ body {
 .img-block {
   min-height: 340px;
   position: relative;
+  cursor: pointer;
 }
 
 .HomeHeader {
@@ -597,4 +598,47 @@ body {
 
 .google-button {
   margin-bottom: 15px;
+}
+
+.movie-popup-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto auto;
+}
+
+.movie-popup-left {
+  display: inline-grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.movie-popup-right {
+  display: inline-grid;
+  grid-column-start: 2;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.movie-popup-right h1 {
+  margin: 0;
+}
+
+.home-movie-rodal .rodal-dialog{
+  width: 50% !important;
+  height: 50% !important;
+  min-height: 400px !important;
+  min-width: 800px !important; 
+}
+
+.movie-popup-poster {
+  width: 240px;
+  height: 350px;
+}
+
+.popup-youtube-video{
+  width: 500px;
+  height: 300px;
 }

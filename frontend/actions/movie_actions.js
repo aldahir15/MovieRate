@@ -55,3 +55,9 @@ export const fetchOMDBMovie = (title, year) => dispatch => (
     dispatch(receiveMovies(movie))
   ))
 );
+
+export const fetchMovieTrailer = (title, year) => dispatch => (
+  OMDBAPIUtil.fetchMovieTrailer(title, year).then(trailer => (
+    dispatch(receiveMovies(trailer))
+  ))
+);
