@@ -52192,6 +52192,100 @@ var MoviePopUp = function (_React$Component) {
                         this.state.movie.title
                     ),
                     this.youtubeVideo()
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "movie-popup-information" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "popup-facts" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "popup-facts-rated" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "popup-item-container" },
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-label" },
+                                    "Rated: "
+                                ),
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-var" },
+                                    this.state.movie.rated
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "popup-facts-genre" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "popup-item-container" },
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-label" },
+                                    "Genre: "
+                                ),
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-var" },
+                                    this.state.movie.genre
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "popup-facts-year" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "popup-item-container" },
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-label" },
+                                    "Year: "
+                                ),
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-var" },
+                                    this.state.movie.year
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "popup-facts-runtime" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "popup-item-container" },
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-label" },
+                                    "Runtime: "
+                                ),
+                                _react2.default.createElement(
+                                    "div",
+                                    { className: "popup-item-var" },
+                                    this.state.movie.runtime
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "popup-description" },
+                        _react2.default.createElement(
+                            "h4",
+                            null,
+                            "Description: "
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "popup-item-var" },
+                            this.state.movie.description
+                        )
+                    )
                 )
             );
         }

@@ -68,6 +68,38 @@ class MoviePopUp extends React.Component {
                 <h1>{this.state.movie.title}</h1>
                 {this.youtubeVideo()}
             </div>
+            <div className="movie-popup-information">
+                <div className="popup-facts">
+                    <div className="popup-facts-rated">
+                      <div className="popup-item-container">                          
+                        <div className="popup-item-label">Rated: </div>
+                        <div className="popup-item-var">{this.state.movie.rated}</div>
+                      </div>
+                    </div>
+                    <div className="popup-facts-genre">
+                      <div className="popup-item-container">                          
+                        <div className="popup-item-label">Genre: </div>
+                        <div className="popup-item-var">{this.state.movie.genre}</div>
+                      </div>
+                    </div>
+                    <div className="popup-facts-year">
+                      <div className="popup-item-container">                          
+                        <div className="popup-item-label">Year: </div>
+                        <div className="popup-item-var">{this.state.movie.year}</div>
+                      </div>
+                    </div>
+                    <div className="popup-facts-runtime">
+                      <div className="popup-item-container">                          
+                        <div className="popup-item-label">Runtime: </div>
+                        <div className="popup-item-var">{this.state.movie.runtime}</div>
+                      </div>
+                    </div>
+                </div>
+                <div className="popup-description">
+                    <h4>Description: </h4>
+                    <div className="popup-item-var">{this.state.movie.description}</div>
+                </div>
+            </div>
           </div>
       )
   }
