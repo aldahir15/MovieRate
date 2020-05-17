@@ -34,8 +34,7 @@ class HomeMovieModal extends React.Component {
     render() {
         return (
             <div>
-                {/* <button onClick={this.show.bind(this)}>show</button> */}
-                <HomeMovie movie={this.props.movie} key={this.key} open={this.show.bind(this)}/>
+                <HomeMovie movie={this.props.movie} key={this.key} open={this.show.bind(this)} deleteMovie={this.props.deleteMovie}/>
 
                 <Rodal visible={this.state.visible} onClose={this.hide.bind(this)} className="home-movie-rodal">
                     {this.showMovieModal()}

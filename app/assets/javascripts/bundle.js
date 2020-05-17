@@ -50392,6 +50392,7 @@ var Home = function (_React$Component) {
 
     _this.filter = _this.filter.bind(_this);
     _this.movieListToObj = _this.movieListToObj.bind(_this);
+    _this.deleteMovie = _this.deleteMovie.bind(_this);
 
     _this.masterMovieList;
 
@@ -50475,6 +50476,15 @@ var Home = function (_React$Component) {
       } else if (target.id === "filter-genre") {}
     }
   }, {
+    key: 'deleteMovie',
+    value: function deleteMovie(movie_id) {
+      var refreshedMoviesArr = Object.values(this.state.movies).filter(function (movie) {
+        return movie.id != movie_id;
+      });
+      var refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
+      this.setState({ movies: refreshedMoviesObj });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this3 = this;
@@ -50507,7 +50517,7 @@ var Home = function (_React$Component) {
           'ul',
           { id: 'main-container-ul' },
           Object.keys(this.state.movies).map(function (key) {
-            return _react2.default.createElement(_home_movie_modal2.default, { movie: _this3.state.movies[key], key: key });
+            return _react2.default.createElement(_home_movie_modal2.default, { movie: _this3.state.movies[key], key: key, deleteMovie: _this3.deleteMovie });
           })
         )
       );
@@ -51425,7 +51435,7 @@ var HomeMovieModal = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_home_movie_container2.default, { movie: this.props.movie, key: this.key, open: this.show.bind(this) }),
+                _react2.default.createElement(_home_movie_container2.default, { movie: this.props.movie, key: this.key, open: this.show.bind(this), deleteMovie: this.props.deleteMovie }),
                 _react2.default.createElement(
                     _rodal2.default,
                     { visible: this.state.visible, onClose: this.hide.bind(this), className: 'home-movie-rodal' },
@@ -51956,20 +51966,13 @@ var HomeMovie = function (_React$Component) {
     }, {
         key: "deleteMovie",
         value: function deleteMovie(e) {
-            var movie_id = e.target.id;
-            var rating_id = Object.values(this.state.movies).find(function (movie) {
-                return movie.id == movie_id;
-            }).rating.id;
+            e.stopPropagation();
+            var movie_id = this.state.movie.id;
+            var rating_id = this.state.movie.rating.id;
             var answer = window.confirm("Delete Movie?");
             if (answer) {
-                // const movie = this.props.deleteMovie(id);
                 this.props.deleteRating(rating_id);
-                var refreshedMoviesArr = Object.values(this.state.movies).filter(function (movie) {
-                    return movie.id != movie_id;
-                });
-                // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
-                var refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
-                this.setState({ movies: refreshedMoviesObj });
+                this.props.deleteMovie(movie_id);
             }
         }
     }, {
@@ -51977,10 +51980,10 @@ var HomeMovie = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                { className: "movie-block", id: this.state.movie.id, key: this.state.key, onClick: this.props.open },
+                { className: "movie-block", id: this.state.movie.id, key: this.state.key },
                 _react2.default.createElement(
                     "div",
-                    { className: "img-block" },
+                    { className: "img-block", onClick: this.props.open },
                     _react2.default.createElement("img", { src: this.state.movie.img, className: "movie-poster-img", onMouseEnter: this.handleEnterPoster, onMouseLeave: this.handleLeavePoster }),
                     _react2.default.createElement(
                         "div",
@@ -52028,6 +52031,7 @@ var HomeMovie = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = HomeMovie;
+// onClick = { this.props.open }
 
 /***/ }),
 /* 136 */

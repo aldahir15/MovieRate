@@ -138,16 +138,13 @@ class HomeMovie extends React.Component {
     }
 
     deleteMovie(e) {
-        const movie_id = e.target.id;
-        const rating_id = Object.values(this.state.movies).find(movie => movie.id == movie_id).rating.id;
+        e.stopPropagation();
+        const movie_id = this.state.movie.id;
+        const rating_id = this.state.movie.rating.id;
         var answer = window.confirm("Delete Movie?")
         if (answer) {
-            // const movie = this.props.deleteMovie(id);
             this.props.deleteRating(rating_id);
-            const refreshedMoviesArr = Object.values(this.state.movies).filter(movie => movie.id != movie_id);
-            // const refreshedMoviesObj = Object.assign({}, refreshedMoviesArr);
-            const refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
-            this.setState({ movies: refreshedMoviesObj });
+            this.props.deleteMovie(movie_id);
         }
     }
 
@@ -155,8 +152,8 @@ class HomeMovie extends React.Component {
 
     render() {
         return (
-            <div className="movie-block" id={this.state.movie.id} key={this.state.key} onClick={this.props.open}>
-            <div className="img-block">
+        <div className="movie-block" id={this.state.movie.id} key={this.state.key}>
+            <div className="img-block" onClick={this.props.open}>
                 <img src={this.state.movie.img} className="movie-poster-img" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}></img>
                 <div className="overlay" onMouseEnter={this.handleEnterPoster} onMouseLeave={this.handleLeavePoster}>
                 <div className="delete-container">
@@ -181,3 +178,4 @@ class HomeMovie extends React.Component {
 }
 
 export default HomeMovie;
+// onClick = { this.props.open }

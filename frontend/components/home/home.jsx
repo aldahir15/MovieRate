@@ -10,6 +10,7 @@ class Home extends React.Component {
     super(props);
     this.filter = this.filter.bind(this);
     this.movieListToObj = this.movieListToObj.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
 
     this.masterMovieList;
 
@@ -89,6 +90,12 @@ class Home extends React.Component {
     }
   }
 
+  deleteMovie(movie_id) {
+    const refreshedMoviesArr = Object.values(this.state.movies).filter(movie => movie.id != movie_id);
+    const refreshedMoviesObj = this.movieListToObj(refreshedMoviesArr);
+    this.setState({ movies: refreshedMoviesObj });
+  }
+
   render() {
     return (
     <div id = "main-container">
@@ -107,7 +114,7 @@ class Home extends React.Component {
       </div>
       <ul id = "main-container-ul">
         {Object.keys(this.state.movies).map(key => 
-          <HomeMovieModal movie={this.state.movies[key]} key={key}></HomeMovieModal>)}
+          <HomeMovieModal movie={this.state.movies[key]} key={key} deleteMovie={this.deleteMovie}></HomeMovieModal>)}
       </ul>
     </div>)
   }
