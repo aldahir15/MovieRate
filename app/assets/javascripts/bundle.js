@@ -46670,7 +46670,7 @@ var fetchMovieTrailer = exports.fetchMovieTrailer = function fetchMovieTrailer(t
     movieId = movie.results[0].id;
     return $.ajax({
       method: 'GET',
-      url: 'http://api.themoviedb.org/3/movie/' + movieId + '/videos?api_key=' + TRAILER_KEY
+      url: 'https://api.themoviedb.org/3/movie/' + movieId + '/videos?api_key=' + TRAILER_KEY
     });
   });
 };
