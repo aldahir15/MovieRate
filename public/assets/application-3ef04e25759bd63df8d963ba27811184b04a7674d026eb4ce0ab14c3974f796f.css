@@ -1,0 +1,887 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+/* line 6, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 21, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+.optin-container {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+  width: 30rem;
+}
+
+/* line 26, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+.optin-container input[type=text] {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  font-size: 15pt;
+  color: white;
+  background: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid white;
+  width: 80%;
+  margin-right: 5px;
+}
+
+/* line 40, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+.optin-container input[type=number] {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  font-size: 15pt;
+  color: white;
+  background: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid white;
+  width: 80%;
+  margin-right: 5px;
+}
+
+/* line 54, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+/* line 59, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+.cta button {
+  color: white;
+  background: transparent;
+  font-size: 15pt;
+  border: 0;
+}
+
+/* line 66, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+.cta {
+  background-image: linear-gradient(120deg, #c90000, #af0000);
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 1.75rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+}
+
+@media screen and (max-width: 600px) {
+  /* line 81, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+  .cta {
+    line-height: 1.4;
+    padding: 1.25rem 1rem;
+  }
+}
+/* line 87, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+form {
+  background: #f9f9f9;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 1rem;
+  margin: 0;
+  flex-direction: row;
+}
+
+/* line 96, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+form input {
+  padding: 0.75rem;
+  margin: 0;
+}
+
+/* line 101, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+form input[type="email"] {
+  border: none;
+  font-size: 1rem;
+  flex: 1;
+  outline: #E52B50;
+}
+
+/* line 108, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+form input[type="email"]:focus {
+  outline: 0.25rem solid #E52B50;
+}
+
+/* line 112, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+form input[type="submit"] {
+  background: linear-gradient(#e84263, #e52b50);
+  cursor: pointer;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  margin: 0 0 0 1rem;
+  padding: 0 3rem;
+  transition: all 0.25s ease-in-out;
+}
+
+/* line 123, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+form input[type="submit"]:hover {
+  background: linear-gradient(#e84667, #e63054);
+}
+
+@media screen and (max-width: 600px) {
+  /* line 128, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+  form {
+    flex-flow: row wrap;
+  }
+
+  /* line 131, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+  form input {
+    padding: 1rem !important;
+    margin: 0 !important;
+    flex: 100%;
+  }
+
+  /* line 136, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+  form input[type="submit"] {
+    margin-top: 1rem !important;
+  }
+}
+/* line 141, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+.hidden {
+  display: none;
+}
+
+/* line 145, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+input:focus {
+  outline: 0;
+}
+
+/* line 149, /Users/josemoreno/Documents/MovieRate/app/assets/stylesheets/static_pages.scss */
+button:focus {
+  outline: 0;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+
+body {
+  /* background-color: #141414; */
+  background-image: linear-gradient(120deg, #141414, #312e2e);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+ .Search-OMDB {
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 500px;
+  min-height: 200px;
+  margin-top: 50px;
+  /* background-color: #5d8074; */
+  border-radius: 10px;
+  color: black;
+ }
+
+ .Search-OMDB div {
+  display: flex;
+  justify-content: center;
+ }
+
+ .search-button {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+.searchButton {
+  background-color: transparent;
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12pt;
+  font-weight: bolder;
+  color: #c90000;
+  text-align: left;
+  text-decoration: none;
+  /* display: inline-block;
+  font-size: 16px; */
+}
+
+.searchButton:hover {
+  color: #8f0000;
+}
+
+ .find-movie-div {
+  display: flex;
+  flex-direction: column-reverse;
+ }
+
+ .find-movie-button {
+  background: url("https://res.cloudinary.com/ddgt25kwb/image/upload/c_scale,w_30/v1549089183/whitesearchicon_njy0yp.png");
+  display: flex;
+  height: 30px;
+  width: 30px;
+  border: 0;
+ }
+
+ #OMDBTitle, #OMDBTitle::placeholder, #OMDBTitle:focus {
+  margin-bottom: 10px;
+  height: 50px;
+  border: 0;
+  width: 400px;
+  background-color: transparent;
+  color: white;
+  font-size: 50px;
+  outline: none;
+ }
+
+ #OMDBTitle:focus {
+   border: 0;
+ }
+
+ .search-title {
+  margin-top: 30px;
+  color: #4c4a4a;
+ }
+
+ #main-container {
+   display: flex;
+   width: 85%;
+   flex-direction: column;
+   min-width: 1000px;
+   margin: 0 auto;
+ }
+
+
+ h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bolder;
+  font-size: 14pt;
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+ /* ul {
+   list-style-type: none;
+ } */
+
+ #main-container-ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+ }
+
+ .movie-block {
+   max-width: 230px;
+   margin-top: 10px;
+   margin-left: 10px;
+   margin-right: 10px;
+   margin-bottom: 30px;
+ }
+
+.movie-poster-img {
+  width: 230px;
+  height: 340px;
+  /* margin-bottom: 10px; */
+  transition: .5s ease;
+}
+
+.filterMovies {
+  display: flex;
+  margin-left: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  font-size: 10pt;
+  color: white;
+}
+
+.filter {
+  border: 0px;
+  /* background-image: linear-gradient(120deg, #f33838, #ec3030); */
+  background-image: linear-gradient(120deg, #c90000, #af0000);
+  opacity: 0.5;
+  border-radius: 2.5px;
+  text-shadow: 1px 1px #c00000;
+  padding: 3px 20px;
+  cursor: pointer;
+}
+
+.filter:hover, .filter-active {
+  border: 0px;
+  opacity: 1;
+  background-image: linear-gradient(120deg, #c90000, #af0000);
+  border-radius: 2.5px;
+  text-shadow: 1px 1px #8f0000;
+  padding: 3px 20px;
+  cursor: pointer;
+}
+
+.filter-divider {
+  width: 10px;
+}
+
+.movie-poster-img:hover, .movie-poster-hover {
+  /* position: absolute; */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* height: 100%;
+  width: 100%; */
+  opacity: 0.2;
+  transition: .5s ease;
+  transform: scale(1.05);
+  /* background-color: #e0e0e0; */
+}
+
+.img-block:hover .overlay {
+  opacity: 1;
+}
+
+
+/* .overlay {
+  opacity: 0;
+  position: relative;
+  top: -250px;
+  height: 0;
+  padding: 10px;
+} */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #008CBA; */
+}
+
+.delete-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 7px;
+  margin-right: 5px;
+}
+
+.delete-button {
+  border: 0px;
+  /* background-image: linear-gradient(120deg, #f33838, #ec3030); */
+  background-image: linear-gradient(120deg, #c90000, #af0000);
+  opacity: 0.75;
+  border-radius: 2.5px;
+  text-shadow: 1px 1px #c00000;
+  padding: 1px 10px;
+  cursor: pointer;
+  color: white;
+  transition: .5s ease;
+  font-size: 12px;
+} 
+
+.delete-button:hover {
+  border: 0px;
+  opacity: 1 !important;
+  background-image: linear-gradient(120deg, #c90000, #af0000);
+  border-radius: 2.5px;
+  text-shadow: 1px 1px #8f0000;
+  padding: 1px 10px;
+  cursor: pointer;
+}
+
+.overlay-text {
+  display: flex;
+  margin-top: 60%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  transition: .5s ease;
+  /* transform: scale(1.1); */
+}
+
+/* .overlay {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+} */
+
+.movie-block p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 10pt;
+  font-weight: lighter;
+  color: white;
+  /* margin: 0; */
+}
+
+.rating-img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.rating-img:hover {
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.img-block {
+  min-height: 340px;
+  position: relative;
+  cursor: pointer;
+}
+
+.HomeHeader {
+  display: flex;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  border-bottom: 1px solid #c1c1c1;
+  margin: 20px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+
+.HomeHeader h1 {
+  margin: 0;
+}
+
+.HomeHeader button:hover, .searchButton {
+  cursor: pointer;
+}
+
+.OMDB-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.OMDB-img {
+  width: 40%;
+  height: 40%;
+  /* padding: 5px;
+  border: 1px solid #c1c1c1; */
+}
+
+.OMDB-ul {
+  list-style: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: lighter;
+  font-size: 10pt;
+  line-height: 16pt;
+  color: #686868;
+  padding-left: 16px;
+  margin: 0;
+}
+
+.search-title {
+  size: 24px;
+}
+
+#OMDBYear {
+  width: 30%;
+  background: transparent;
+}
+
+#OMDBYear::-webkit-outer-spin-button,
+#OMDBYear::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+.login-img-div {
+  /* display: none; */
+  width: 100%;
+}
+
+.login-header {
+  display: flex;
+  /* background-color: white; */
+  flex-flow: row-reverse;
+  padding-right: 20px;
+  /* height: 55px; */
+  padding-top: 15px;
+
+  color: white;
+  position: absolute;
+  top: 45px;
+  z-index: 9999999;
+  width: 73%;
+}
+
+.login-button, .signup-button {
+  font-size: 25px !important;
+}
+
+.logout-header {
+  display: flex;
+  background-color: white;
+  /* flex-flow: row-reverse; */
+  padding-right: 20px;
+  height: 55px;
+  padding-top: 15px;
+  justify-content: space-between;
+}
+
+.login-divider, .login-divider2 {
+  width: 20px;
+}
+
+.login-divider2 {
+  border-left: 2px solid white;
+  margin-bottom: 35px;
+}
+
+.signup-button, .login-button, .log-out-button, .home-button, .hello-user {
+  font-size: large;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hello-user {
+  cursor: initial;
+}
+
+.logo-img {
+  background-image: url("https://res.cloudinary.com/ddgt25kwb/image/upload/v1582321379/admission-2974645_1920_al8p5q.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1000px;
+}
+
+.logo-img h3 {
+  margin-top: 0;
+  color: white;
+  font-size: 170px;
+  display: flex;
+  justify-content: center;
+  padding-top: 400px;
+  transition: opacity 1.5s ease-in;
+  opacity: 0;
+}
+
+.app-div {
+  width: 100%;
+}
+
+.hello-user, .login-ul-nav, .home-button p {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.logout-and-name {
+  display: flex;
+  white-space: nowrap;
+  padding-top: 45px;
+  padding-right: 15px;
+}
+
+.loggedIn-home-header {
+  display: flex;
+  justify-content: space-between;
+
+  padding-left: 5%;
+}
+
+.HomeHeader {
+  width: 100%;
+}
+
+.left-login-header {
+  display: flex;
+}
+
+.left-login-header img {
+  filter: invert();
+}
+
+.login-ul-nav, .home-button p {
+  margin-bottom: 0;
+}
+
+.left-login-buttons {
+  padding-top: 25px;
+}
+
+.nav-items {
+  color: white;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding: 5px 11px 0 11px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+}
+
+.nav-items:hover {
+  background-color: rgb(34, 34, 34);
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+
+.hello-user, .log-out-button {
+  color: white;
+}
+
+.session-form-div {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 4px 0 rgba(0,0,0,0.15);
+  width: 420px;
+  justify-content: center;
+}
+
+.session-form-div h1 {
+  display: flex;
+  /* justify-content: left; */
+  font-family: sans-serif;
+  padding-left: 15px;
+  width: 350px;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px;
+  background-color: white;
+  padding: 15px;
+  padding-top: 0;
+}
+
+.submit-session {
+  margin: 0 !important;
+  height: 56px;
+  width: 100%;
+  border-radius: 4px;
+  border: 0;
+  background-color: #040405;
+  font-family: Graphik;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-letter-spacing: 2px;
+  -moz-letter-spacing: 2px;
+  -ms-letter-spacing: 2px;
+  letter-spacing: 2px;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  cursor: pointer;
+}
+
+.session-inputs {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  height: 50px;
+  width: 100%;
+  border: 2px solid #B9BFCB;
+  border-radius: 4px;
+  background-color: #FFF;
+  font-size: 14px;
+  line-height: 15px;
+  text-indent: 15px;
+}
+
+.session-label {
+  height: 12px;
+  color: #636E85;
+  font-size: 12px;
+  font-weight: 600;
+  -webkit-letter-spacing: 0.5px;
+  -moz-letter-spacing: 0.5px;
+  -ms-letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  line-height: 13px;
+  float: left;
+}
+
+.session-form-inner-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: initial;
+}
+
+.session-footer {
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f9;
+  border-top: 1px solid gray;
+  padding: 10px 0px 10px 0px;
+}
+
+.session-footer-message {
+  color: #655d5d;
+}
+
+.session-footer-message a {
+  color: rgb(230, 52, 86);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signed-up-message {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0px 25px 25px;
+}
+
+#sign-up {
+  /* height: 570px;
+  justify-content: space-between; */
+  transition: .5s ease;
+
+}
+
+.google-button {
+  margin-bottom: 15px;
+}
+
+.movie-popup-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto auto;
+  color: #eaeaea;
+}
+
+.movie-popup-left {
+  display: inline-grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.movie-popup-right {
+  display: inline-grid;
+  grid-column-start: 2;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.movie-popup-right h1 {
+  margin: 0;
+}
+
+.home-movie-rodal .rodal-dialog{
+  width: 50% !important;
+  height: 50% !important;
+  min-height: 700px !important;
+  min-width: 800px !important; 
+  overflow: auto;
+  background: radial-gradient(#7b3636, #1b0707);
+}
+
+.movie-popup-poster {
+  width: 240px;
+  height: 350px;
+}
+
+.popup-youtube-video {
+  width: 510px;
+  height: 310px;
+}
+
+.movie-popup-information {
+  display: inline-grid;
+  grid-column-start: 1;
+  grid-column-end: 10;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.movie-popup-information h4 {
+  margin: 0;
+  white-space: pre;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.popup-description {
+  margin-top: 20px;
+}
+
+.popup-facts {
+  display: grid;
+  margin-top: 10px;
+}
+
+.popup-facts-rated {
+  display: inline-grid;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.popup-facts-genre {
+  display: inline-grid;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.popup-facts-year {
+  display: inline-grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.popup-facts-runtime {
+  display: inline-grid;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.popup-item-container {
+  display: flex;
+}
+
+.popup-item-label {
+  font-size: 20px;
+  font-weight: 700;
+  white-space: pre;
+}
+
+.popup-item-var {
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.rodal-mask {
+  transition: .5s ease;
+  background: rgba(0, 0, 0, 0.75) !important;
+}
