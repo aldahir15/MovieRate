@@ -26,7 +26,7 @@ class Header extends React.Component {
       <div className="loggedIn-home-header">
         <div className="HomeHeader">
           <div className="left-login-header">
-            <h1>Movie Rates</h1>
+            <img src={"https://res.cloudinary.com/ddgt25kwb/image/upload/c_scale,h_50/v1589759948/Logo_Header_2_vb461t.png"}/>
             <div class="left-login-buttons">
               <ul className="login-ul-nav">
                 <Link to="/home" className="home-button"><p className="nav-items">Home</p></Link>

@@ -52792,11 +52792,7 @@ var Header = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'left-login-header' },
-            _react2.default.createElement(
-              'h1',
-              null,
-              'Movie Rates'
-            ),
+            _react2.default.createElement('img', { src: "https://res.cloudinary.com/ddgt25kwb/image/upload/c_scale,h_50/v1589759948/Logo_Header_2_vb461t.png" }),
             _react2.default.createElement(
               'div',
               { 'class': 'left-login-buttons' },

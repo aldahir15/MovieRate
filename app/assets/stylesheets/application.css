@@ -441,7 +441,7 @@ body {
 .logout-and-name {
   display: flex;
   white-space: nowrap;
-  padding-top: 35px;
+  padding-top: 45px;
   padding-right: 15px;
 }
 
@@ -460,12 +460,16 @@ body {
   display: flex;
 }
 
+.left-login-header img {
+  filter: invert();
+}
+
 .login-ul-nav, .home-button p {
   margin-bottom: 0;
 }
 
 .left-login-buttons {
-  padding-top: 15px;
+  padding-top: 25px;
 }
 
 .nav-items {
