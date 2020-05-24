@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: {format: :json} do
     resources :movies, :ratings
-    resources :users, only: [:create, :show, :update, :movies]
+    resources :users, only: [:create, :show, :update, :movies, :lists]
     resources :users do 
       get :movies
+      get :lists
     end
     resources :users do
       member do

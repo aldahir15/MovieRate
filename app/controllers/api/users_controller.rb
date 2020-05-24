@@ -35,14 +35,18 @@ class Api::UsersController < ApplicationController
     end
 
     def movies
-        print("LOCO")
         print(params[:user_id])
         user = User.find(params[:user_id])
         @movies_and_ratings = user.rating.map { |rating|
           [Movie.find(rating.movie_id), rating]
         }
         print(@movies)
-        print("NOTHING VATO")
+    end
+
+    def lists
+        user = User.find(params[:user_id])
+        print(user.lists.first.name)
+        @lists = user.lists
     end
 
     def confirm_email

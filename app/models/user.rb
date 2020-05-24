@@ -66,4 +66,8 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         class_name: :Rating
 
+    has_many :lists,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :List
 end

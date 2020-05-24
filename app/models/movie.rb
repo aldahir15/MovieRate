@@ -5,4 +5,9 @@ class Movie < ApplicationRecord
     primary_key: :id,
     foreign_key: :movie_id,
     class_name: :Rating
+
+  has_many :listmoviejoiner,
+    primary_key: :id,
+    foreign_key: :movie_id,
+    class_name: :ListMovieJoiner
 end
