@@ -727,3 +727,11 @@ body {
   transition: .5s ease;
   background: rgba(0, 0, 0, 0.75) !important;
 }
+
+.login-ul-nav {
+  display: flex;
+}
+
+.nav-spacer {
+  width: 10px;
+}
